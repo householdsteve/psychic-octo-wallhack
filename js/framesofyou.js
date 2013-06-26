@@ -66,7 +66,7 @@ jQuery(function($) {
     );
 
     // Adds like buttons and make them clickable as ordinary permalinks.
-    p.prepend('&nbsp;&nbsp;|&nbsp;&nbsp;');
+    p.prepend('&nbsp;&nbsp;');
     video.find('p').prepend(
       construct_like_counter(videoinfo)
       .addClass('permalink')
