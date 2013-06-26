@@ -421,71 +421,71 @@ jQuery(function($) {
     });
   })();
 
-//   // Reparse Facebook, Twitter and Pinterest tags...
-//   (function() {
-//     $(document).on('inlineajaxdomready', function() {
-//       try {
-//         FB.XFBML.parse()
-//       } catch(e) {}
-// 
-//       try {
-//         twttr.widgets.load();
-//       } catch(e) {}
-// 
-//       // Create Pinterest tags that are waiting for parsing...
-//       $('.pinterest-pin-it-dummy').each(function() {
-//         var permalink = $(this).data('belongs-to-permalink');
-// 
-//         // Any datasources found? Use them and create button!
-//         var source = $('#videos article, #sidebar-like-toplist li')
-//         .filter(function() {
-//           var source_candidate = $(this);
-//           return (
-//             source_candidate.data('permalink') == permalink
-//             && source_candidate.data('videofyme-link')
-//             && source_candidate.data('thumbnails-extra-large')
-//             && source_candidate.data('title')
-//           );
-//         })
-//         .first();
-// 
-//         if(source.length) {
-//           // Create native Pinterest button with filled in data.
-//           var url = 'http://pinterest.com/pin/create/button/'
-//           + '?url=$URL&media=$MEDIA&description=$DESCRIPTION'
-//           .replace('$URL', encodeURIComponent(
-//             source.data('videofyme-link')
-//           ))
-//           .replace('$MEDIA', encodeURIComponent(
-//             source.data('thumbnails-extra-large')
-//           ))
-//           .replace('$DESCRIPTION', encodeURIComponent(
-//             source.data('title')
-//           ));
-//           var pin_it = $('<a class="pin-it-button" count-layout="horizontal"/>')
-//           .attr('href', url)
-//           .append(
-//             $('<img/>')
-//             .attr('src', '//assets.pinterest.com/images/PinExt.png')
-//             .attr('alt', 'Pin It')
-//           );
-// 
-//           // Remove this dummy, replacing it with the native button.
-//           $(this).replaceWith(pin_it);
-//         }
-//       });
-// 
-//       try {
-//         // This is the way to re-parse Pin It-buttons...
-//         $.ajax({
-//           url: location.protocol + '//assets.pinterest.com/js/pinit.js',
-//           dataType: 'script',
-//           cache: true
-//         });
-//       } catch(e) {}
-//     });
-//   })();
-// });
+  // Reparse Facebook, Twitter and Pinterest tags...
+  (function() {
+    $(document).on('inlineajaxdomready', function() {
+      // try {
+      //         FB.XFBML.parse()
+      //       } catch(e) {}
+      // 
+      //       try {
+      //         twttr.widgets.load();
+      //       } catch(e) {}
+
+      // Create Pinterest tags that are waiting for parsing...
+      // $('.pinterest-pin-it-dummy').each(function() {
+      //       var permalink = $(this).data('belongs-to-permalink');
+      // 
+      //       // Any datasources found? Use them and create button!
+      //       var source = $('#videos article, #sidebar-like-toplist li')
+      //       .filter(function() {
+      //         var source_candidate = $(this);
+      //         return (
+      //           source_candidate.data('permalink') == permalink
+      //           && source_candidate.data('videofyme-link')
+      //           && source_candidate.data('thumbnails-extra-large')
+      //           && source_candidate.data('title')
+      //         );
+      //       })
+      //       .first();
+      // 
+      //       if(source.length) {
+      //         // Create native Pinterest button with filled in data.
+      //         var url = 'http://pinterest.com/pin/create/button/'
+      //         + '?url=$URL&media=$MEDIA&description=$DESCRIPTION'
+      //         .replace('$URL', encodeURIComponent(
+      //           source.data('videofyme-link')
+      //         ))
+      //         .replace('$MEDIA', encodeURIComponent(
+      //           source.data('thumbnails-extra-large')
+      //         ))
+      //         .replace('$DESCRIPTION', encodeURIComponent(
+      //           source.data('title')
+      //         ));
+      //         var pin_it = $('<a class="pin-it-button" count-layout="horizontal"/>')
+      //         .attr('href', url)
+      //         .append(
+      //           $('<img/>')
+      //           .attr('src', '//assets.pinterest.com/images/PinExt.png')
+      //           .attr('alt', 'Pin It')
+      //         );
+      // 
+      //         // Remove this dummy, replacing it with the native button.
+      //         $(this).replaceWith(pin_it);
+      //       }
+      //     });
+
+      // try {
+      //        // This is the way to re-parse Pin It-buttons...
+      //        $.ajax({
+      //          url: location.protocol + '//assets.pinterest.com/js/pinit.js',
+      //          dataType: 'script',
+      //          cache: true
+      //        });
+      //      } catch(e) {}
+    });
+  })();
+});
 
 /*
  * Infinity scroll
