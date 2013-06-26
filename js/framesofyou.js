@@ -19,7 +19,23 @@
 jQuery.cookie=function(name,value,options){if(typeof value!='undefined'){options=options||{};if(value===null){value='';options=$.extend({},options);options.expires=-1;}var expires='';if(options.expires&&(typeof options.expires=='number'||options.expires.toUTCString)){var date;if(typeof options.expires=='number'){date=new Date();date.setTime(date.getTime()+(options.expires*24*60*60*1000));}else{date=options.expires;}expires='; expires='+date.toUTCString();}var path=options.path?'; path='+(options.path):'';var domain=options.domain?'; domain='+(options.domain):'';var secure=options.secure?'; secure':'';document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('');}else{var cookieValue=null;if(document.cookie&&document.cookie!=''){var cookies=document.cookie.split(';');for(var i=0;i<cookies.length;i++){var cookie=jQuery.trim(cookies[i]);if(cookie.substring(0,name.length+1)==(name+'=')){cookieValue=decodeURIComponent(cookie.substring(name.length+1));break;}}}return cookieValue;}};
 
 jQuery(function ($) {
-
+    var mindeg = -1;
+    var maxdeg = 1;
+    // and the formula is:
+    $('#videos article a.permalink').each(function(i,v){
+      var randomDeg = Math.floor(Math.random() * (maxdeg - mindeg + 1)) + mindeg;
+      $(this).css({
+                              '-webkit-transform': 'rotate(' + randomDeg + 'deg)',
+                              '-moz-transform': 'rotate(' + randomDeg + 'deg)',
+                              '-ms-transform': 'rotate(' + randomDeg + 'deg)',
+                              '-o-transform': 'rotate(' + randomDeg + 'deg)',
+                              'transform': 'rotate(' + randomDeg + 'deg)',
+                              'zoom': 1,
+                              'opacity': 1
+                  });
+    });
+    
+    
     var parentHolder = $("#sidebar-info-text");
     var limitIG = 5;
     var checkUrlSource = document.URL.split('/');
@@ -30,10 +46,19 @@ jQuery(function ($) {
             //console.log(data);
             parentHolder.addClass('processed').empty();
             $.each(data, function (i, v) {
+              var randomDeg = Math.floor(Math.random() * (maxdeg - mindeg + 1)) + mindeg;
                 if (i < limitIG) $('<img/>', {
                     src: v.urlbig,
                     "class": "ig_imgs"
-                }).appendTo(parentHolder);
+                }).css({
+                                            '-webkit-transform': 'rotate(' + randomDeg + 'deg)',
+                                            '-moz-transform': 'rotate(' + randomDeg + 'deg)',
+                                            '-ms-transform': 'rotate(' + randomDeg + 'deg)',
+                                            '-o-transform': 'rotate(' + randomDeg + 'deg)',
+                                            'transform': 'rotate(' + randomDeg + 'deg)',
+                                            'zoom': 1,
+                                            'opacity': 1
+                                }).appendTo(parentHolder);
             });
 
             parentHolder.on("click", function () {
