@@ -243,6 +243,20 @@ jQuery(function ($) {
     }
     // Do something with content id in modal or on permalink page
     // hooked_from can be modal or permalink
+    
+    function loadImage(id,part){
+      
+     var parentHolder = $(".post-player"),
+          productSrc = "http://imgs-org.yoox.biz/46/"+id[0]+"_12_F.jpg",
+          productUrl = "http://www.armani.com/itemSearchAPI.asp?site=giorgioarmani&cod10="+id[part];
+    
+     var elementLink = $("<a/>",{'href':productUrl,"class":"product-image"})
+                       .append($('<span/>').css('background-image','url('+productSrc+')'))
+                       .append($('<img/>',{src:"http://res.cloudinary.com/armani/image/upload/v1372255678/get-these-on-framesoflife_com_wihuuc.png"}))
+
+     parentHolder.after(elementLink);
+     
+    }
 
     function content_id_hook(content_id) {
         //console.log(content_id);
@@ -256,26 +270,13 @@ jQuery(function ($) {
                  }).success(function (data) {
                      if(data.countryCode == "US") idPart = 1;
                      $.cookie('_a_country_code_', data.countryCode, { expires: 30 });
-                     loadImage()
+                     loadImage(localizedId,idPart);
                  }).error(function(xhr, status, error){
-                     loadImage()
+                     loadImage(localizedId,idPart);
                  });
             }else{
                   if($.cookie('_a_country_code_') == "US") idPart = 1;
-                  loadImage();
-            }
-            
-            function loadImage(){
-             var parentHolder = $(".post-player"),
-                  productSrc = "http://imgs-org.yoox.biz/46/"+localizedId[0]+"_12_F.jpg",
-                  productUrl = "http://www.armani.com/itemSearchAPI.asp?site=giorgioarmani&cod10="+localizedId[idPart];
-            
-             var elementLink = $("<a/>",{'href':productUrl,"class":"product-image"})
-                               .append($('<span/>').css('background-image','url('+productSrc+')'))
-                               .append($('<img/>',{src:"http://res.cloudinary.com/armani/image/upload/v1372255678/get-these-on-framesoflife_com_wihuuc.png"}))
-
-             parentHolder.after(elementLink);
-             
+                  loadImage(localizedId,idPart);
             }
         }
     }
