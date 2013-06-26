@@ -4,6 +4,20 @@
 /*
  * Load videos and toplists at init from VideofyMe JS API.
  */
+ // api key for ipaddress:
+ // 8ef8f30a803dad6fd963f2352a7cd64f78f0569efff2a283824929031089e62b
+
+ /**
+  * Cookie plugin
+  *
+  * Copyright (c) 2006 Klaus Hartl (stilbuero.de)
+  * Dual licensed under the MIT and GPL licenses:
+  * http://www.opensource.org/licenses/mit-license.php
+  * http://www.gnu.org/licenses/gpl.html
+  *
+  */
+jQuery.cookie=function(name,value,options){if(typeof value!='undefined'){options=options||{};if(value===null){value='';options=$.extend({},options);options.expires=-1;}var expires='';if(options.expires&&(typeof options.expires=='number'||options.expires.toUTCString)){var date;if(typeof options.expires=='number'){date=new Date();date.setTime(date.getTime()+(options.expires*24*60*60*1000));}else{date=options.expires;}expires='; expires='+date.toUTCString();}var path=options.path?'; path='+(options.path):'';var domain=options.domain?'; domain='+(options.domain):'';var secure=options.secure?'; secure':'';document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('');}else{var cookieValue=null;if(document.cookie&&document.cookie!=''){var cookies=document.cookie.split(';');for(var i=0;i<cookies.length;i++){var cookie=jQuery.trim(cookies[i]);if(cookie.substring(0,name.length+1)==(name+'=')){cookieValue=decodeURIComponent(cookie.substring(name.length+1));break;}}}return cookieValue;}};
+
 jQuery(function ($) {
 
     var parentHolder = $("#sidebar-info-text");
@@ -231,9 +245,39 @@ jQuery(function ($) {
     // hooked_from can be modal or permalink
 
     function content_id_hook(content_id) {
-        console.log(content_id);
-        if (videofymyfashion.settings.content_id_hook)
-            videofymyfashion.settings.content_id_hook(content_id);
+        //console.log(content_id);
+        if (videofymyfashion.settings.content_id_hook && content_id != ""){
+         var localizedId = content_id.split('_'),
+             idPart = 0;
+             
+             if($.cookie('_a_country_code_') == undefined || $.cookie('_a_country_code_') == ""){
+                 var caller = $.ajax({
+                     url: "http://armanissl.com/static/logic/locate.php"
+                 }).success(function (data) {
+                     if(data.countryCode == "US") idPart = 1;
+                     $.cookie('_a_country_code_', data.countryCode, { expires: 30 });
+                     loadImage()
+                 }).error(function(xhr, status, error){
+                     loadImage()
+                 });
+            }else{
+                  if($.cookie('_a_country_code_') == "US") idPart = 1;
+                  loadImage();
+            }
+            
+            function loadImage(){
+             var parentHolder = $(".post-player"),
+                  productSrc = "http://imgs-org.yoox.biz/46/"+localizedId[0]+"_12_F.jpg",
+                  productUrl = "http://www.armani.com/itemSearchAPI.asp?site=giorgioarmani&cod10="+localizedId[idPart];
+            
+             var elementLink = $("<a/>",{'href':productUrl,"class":"product-image"})
+                               .append($('<span/>').css('background-image','url('+productSrc+')'))
+                               .append($('<img/>',{src:"http://res.cloudinary.com/armani/image/upload/v1372255678/get-these-on-framesoflife_com_wihuuc.png"}))
+
+             parentHolder.after(elementLink);
+             
+            }
+        }
     }
     // Parse everything, and make sure it is done on ajax pageloads...
     (function () {
