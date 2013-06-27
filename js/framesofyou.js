@@ -22,7 +22,7 @@ jQuery(function ($) {
     var mindeg = -1;
     var maxdeg = 1;
     // and the formula is:
-    $('#videos article a.permalink').each(function(i,v){
+    $('#videos article').each(function(i,v){
       var randomDeg = Math.floor(Math.random() * (maxdeg - mindeg + 1)) + mindeg;
       $(this).css({
                               '-webkit-transform': 'rotate(' + randomDeg + 'deg)',
@@ -50,15 +50,14 @@ jQuery(function ($) {
                 if (i < limitIG) $('<img/>', {
                     src: v.urlbig,
                     "class": "ig_imgs"
-                }).css({
-                                            '-webkit-transform': 'rotate(' + randomDeg + 'deg)',
-                                            '-moz-transform': 'rotate(' + randomDeg + 'deg)',
-                                            '-ms-transform': 'rotate(' + randomDeg + 'deg)',
-                                            '-o-transform': 'rotate(' + randomDeg + 'deg)',
-                                            'transform': 'rotate(' + randomDeg + 'deg)',
-                                            'zoom': 1,
-                                            'opacity': 1
-                                }).appendTo(parentHolder);
+                }).css({'-webkit-transform': 'rotate(' + randomDeg + 'deg)',
+                        '-moz-transform': 'rotate(' + randomDeg + 'deg)',
+                        '-ms-transform': 'rotate(' + randomDeg + 'deg)',
+                        '-o-transform': 'rotate(' + randomDeg + 'deg)',
+                        'transform': 'rotate(' + randomDeg + 'deg)',
+                        'zoom': 1,
+                        'opacity': 1
+                    }).appendTo(parentHolder);
             });
 
             parentHolder.on("click", function () {
@@ -67,8 +66,7 @@ jQuery(function ($) {
             });
         });
     }
-
-
+    
     // Invoke the specified features and then calls their response callback.
     function invoke_features(features, response_callbacks) {
         $.ajax({
@@ -276,7 +274,7 @@ jQuery(function ($) {
           productUrl = "http://www.armani.com/itemSearchAPI.asp?site=giorgioarmani&cod10="+id[part];
     
      var elementLink = $("<a/>",{'href':productUrl,"class":"product-image"})
-                       .append($('<span/>').css('background-image','url('+productSrc+')'))
+                       .append($('<span/>').append($('<img/>',{src:productSrc,'width':265})))
                        .append($('<img/>',{src:"http://res.cloudinary.com/armani/image/upload/v1372255678/get-these-on-framesoflife_com_wihuuc.png"}))
 
      parentHolder.after(elementLink);
