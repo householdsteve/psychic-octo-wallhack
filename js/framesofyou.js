@@ -21,7 +21,7 @@ jQuery.cookie=function(name,value,options){if(typeof value!='undefined'){options
 // dont render old posts
 var bottom_reached = false,
     stop_tumblr_post = false,
-    block_post_at = ""; // this string should be filled with last post id from old account
+    block_post_at = "http://gatester.tumblr.com/post/54014171025/ajjjs-eyes"; // this string should be filled with last post id from old account
 
 jQuery(function ($) {
     var mindeg = -1;
@@ -220,7 +220,7 @@ jQuery(function ($) {
                         var current_video_node = $(this);
                         var videotmplink = current_video_node.find('p a');
                         try{
-                          if(videotmplink[0].href == block_post_at){
+                          if(videotmplink.attr("href") == block_post_at){
                             stop_tumblr_post = bottom_reached = true;
                             $('a.infinity-scroll-next').hide();
                           }
