@@ -18,6 +18,11 @@
   */
 jQuery.cookie=function(name,value,options){if(typeof value!='undefined'){options=options||{};if(value===null){value='';options=$.extend({},options);options.expires=-1;}var expires='';if(options.expires&&(typeof options.expires=='number'||options.expires.toUTCString)){var date;if(typeof options.expires=='number'){date=new Date();date.setTime(date.getTime()+(options.expires*24*60*60*1000));}else{date=options.expires;}expires='; expires='+date.toUTCString();}var path=options.path?'; path='+(options.path):'';var domain=options.domain?'; domain='+(options.domain):'';var secure=options.secure?'; secure':'';document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('');}else{var cookieValue=null;if(document.cookie&&document.cookie!=''){var cookies=document.cookie.split(';');for(var i=0;i<cookies.length;i++){var cookie=jQuery.trim(cookies[i]);if(cookie.substring(0,name.length+1)==(name+'=')){cookieValue=decodeURIComponent(cookie.substring(name.length+1));break;}}}return cookieValue;}};
 
+// dont render old posts
+var bottom_reached = false,
+    stop_tumblr_post = false,
+    block_post_at = ""; // this string should be filled with last post id from old account
+
 jQuery(function ($) {
     var mindeg = -1;
     var maxdeg = 1;
@@ -93,7 +98,6 @@ jQuery(function ($) {
     function populate_video(video, videoinfo) {
         var p = video.find('p');
         var a = p.find('a');
-
         // Add video thumbnail and wraps it in the a used for comments etc.
         video.prepend(
             a.clone().empty().append(
@@ -214,13 +218,23 @@ jQuery(function ($) {
                     // independently (this should only happen in a debug environment...)
                     video_node.each(function () {
                         var current_video_node = $(this);
-                        populate_video(current_video_node, videoinfo);
-                        current_video_node
-                            .data('videofyme-link', videoinfo.videofyme_link)
-                            .data('thumbnails-extra-large', videoinfo.thumbnails.extra_large)
-                            .data('title', videoinfo.title);
-                        current_video_node.addClass('videofyme-api-populated');
-                        current_video_node.trigger('videofymeapipopulated');
+                        var videotmplink = current_video_node.find('p a');
+                        try{
+                          if(videotmplink[0].href == block_post_at){
+                            stop_tumblr_post = bottom_reached = true;
+                            $('a.infinity-scroll-next').hide();
+                          }
+                        }catch(err){}
+                        
+                          if(!stop_tumblr_post){
+                            populate_video(current_video_node, videoinfo);
+                            current_video_node
+                                .data('videofyme-link', videoinfo.videofyme_link)
+                                .data('thumbnails-extra-large', videoinfo.thumbnails.extra_large)
+                                .data('title', videoinfo.title);
+                            current_video_node.addClass('videofyme-api-populated');
+                            current_video_node.trigger('videofymeapipopulated');
+                          }
                     });
                 }
             },
@@ -286,6 +300,7 @@ jQuery(function ($) {
         if (videofymyfashion.settings.content_id_hook && content_id != ""){
          var localizedId = content_id.split('_'),
              idPart = 0;
+             localizedId = [localizedId[0].split(":")[1],localizedId[1].split(":")[1]];
              
              if($.cookie('_a_country_code_') == undefined || $.cookie('_a_country_code_') == ""){
                  var caller = $.ajax({
@@ -539,6 +554,10 @@ jQuery(function ($) {
     function maybe_activate() {
         var more_link = videos.find('a.infinity-scroll-next:not(.activated)');
         if (more_link.length != 1) return; // assert(0 <= links.length <= 1)
+        
+        
+
+        if (bottom_reached) return; // assert(0 <= links.length <= 1)
         // If the link is down below the browser windows bottom edge, return...
         if (more_link.offset().top > win.scrollTop() + win.height()) return;
         // It is important to flag it as active, preventing additional requests...

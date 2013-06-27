@@ -38,14 +38,14 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    var videofymyfashion = {
-      settings: {
-        tumblr_blog_id: 710145,
-        videofyme_api_url: 'http://www.videofy.me/jsonp_api.js',
-        thumbnail_imgix_domain: 'videofymethumbs.imgix.net',
-        content_id_hook: function(content_id) { alert(content_id) }
-      }
-    };
+  var videofymyfashion = {
+    settings: {
+      tumblr_blog_id: 710145,
+      videofyme_api_url: 'http://www.videofy.me/jsonp_api.js',
+      thumbnail_imgix_domain: 'videofymethumbs.imgix.net',
+      content_id_hook: function(content_id) { alert(content_id) }
+    }
+  };
   </script>
   <script src="http://static.armanissl.com/js/framesofyou.js" type="text/javascript"></script>
 
@@ -53,80 +53,80 @@
 <body>
   <div id="site">
     <header id="header">
-        <a href="http://arma.ni/fol">{Title}</a>
+      <a href="http://arma.ni/fol">{Title}</a>
     </header>
 
-  
 
-     {block:IndexPage}
-<section id="videos" class="main-content">
-<!--AJAX_REQUEST_MARKER-->
-{block:Posts}
-{block:Video}
-<article data-permalink="{Permalink}" data-player="{JSVideo-250}" class="video-zebra-{block:Post1}1{/block:Post1}{block:Post2}2{/block:Post2}{block:Post3}3{/block:Post3}{block:Post4}4{/block:Post4}{block:Post5}5{/block:Post5}{block:Post6}6{/block:Post6}{block:Post7}7{/block:Post7}{block:Post8}8{/block:Post8}{block:Post9}9{/block:Post9}">
-<p class="meta"><a href="{Permalink}" class="permalink">Comment &amp; Share</a></p>
-</article>
-{/block:Video}
-{block:Photo}<!-- Skipping post type {PostType} -->{/block:Photo}{block:Audio}<!-- Skipping post type {PostType} -->{/block:Audio}{block:Quote}<!-- Skipping post type {PostType} -->{/block:Quote}{block:Text}<!-- Skipping post type {PostType} -->{/block:Text}{block:Answer}<!-- Skipping post type {PostType} -->{/block:Answer}{block:Chat}<!-- Skipping post type {PostType} -->{/block:Chat}{block:Link}<!-- Skipping post type {PostType} -->{/block:Link}
-{/block:Posts}
- 
-{block:NextPage}
-<a class="infinity-scroll-next" href="{NextPage}">More videos...</a>
-{/block:NextPage}
-<!--/AJAX_REQUEST_MARKER-->
-</section>
-{/block:IndexPage}
 
-    {block:PermalinkPage}
-      <section class="main-content">
-        <!-- assert(posts.lenght == 1) -->
-        <!--AJAX_REQUEST_MARKER-->
-        {block:Posts}
-          {block:Video}
-            <article class="post"{block:Date} data-title="{DayOfMonthWithZero}.{MonthNumberWithZero}.{ShortYear}"{block:Date} data-player="{JSVideo-250}" class="video-zebra-{block:Post1}1{/block:Post1}{block:Post2}2{/block:Post2}{block:Post3}3{/block:Post3}{block:Post4}4{/block:Post4}{block:Post5}5{/block:Post5}{block:Post6}6{/block:Post6}{block:Post7}7{/block:Post7}{block:Post8}8{/block:Post8}{block:Post9}9{/block:Post9}">
-              
-              <div class="post-player">{Video-500}</div>
-              
-              {block:PostNotes}
-                <aside class="post-notes">
-                  {PostNotes}
-                </aside>
-              {/block:PostNotes}
-            </article>
-          {/block:Video}
-        {/block:Posts}
-        <!--/AJAX_REQUEST_MARKER-->
-      </section>
-    {/block:PermalinkPage}
+    {block:IndexPage}
+    <section id="videos" class="main-content">
+    <!--AJAX_REQUEST_MARKER-->
+    {block:Posts}
+    {block:Video}
+    <article data-permalink="{Permalink}" data-player="{JSVideo-250}" class="video-zebra-{block:Post1}1{/block:Post1}{block:Post2}2{/block:Post2}{block:Post3}3{/block:Post3}{block:Post4}4{/block:Post4}{block:Post5}5{/block:Post5}{block:Post6}6{/block:Post6}{block:Post7}7{/block:Post7}{block:Post8}8{/block:Post8}{block:Post9}9{/block:Post9}">
+      <p class="meta"><a href="{Permalink}" class="permalink">Comment &amp; Share</a></p>
+    </article>
+    {/block:Video}
+    {block:Photo}<!-- Skipping post type {PostType} -->{/block:Photo}{block:Audio}<!-- Skipping post type {PostType} -->{/block:Audio}{block:Quote}<!-- Skipping post type {PostType} -->{/block:Quote}{block:Text}<!-- Skipping post type {PostType} -->{/block:Text}{block:Answer}<!-- Skipping post type {PostType} -->{/block:Answer}{block:Chat}<!-- Skipping post type {PostType} -->{/block:Chat}{block:Link}<!-- Skipping post type {PostType} -->{/block:Link}
+    {/block:Posts}
 
-    <div id="sidebar">
-      <a href="http://arma.ni/fol-followgram"><img src="http://res.cloudinary.com/armani/image/upload/v1372176737/feed-on-followgram_qqgbxk.png"></a>
-      <aside id="sidebar-info-text" class="first">
-        
-        <!--[if lt IE 9]>
-        <iframe src="http://armanissl.com/static/framesoflife/feed.php" width="250" height="1300" frameborder="0" allowTransparency="true"></iframe>
-        <![endif]-->
-        <img class="preload" src="http://res.cloudinary.com/armani/image/upload/v1372171704/fol-ajax-loader_palzrc.gif" title="loading">
+    {block:NextPage}
+    <a class="infinity-scroll-next" href="{NextPage}">More videos...</a>
+    {/block:NextPage}
+    <!--/AJAX_REQUEST_MARKER-->
+  </section>
+  {/block:IndexPage}
+
+  {block:PermalinkPage}
+  <section class="main-content">
+    <!-- assert(posts.lenght == 1) -->
+    <!--AJAX_REQUEST_MARKER-->
+    {block:Posts}
+    {block:Video}
+    <article class="post"{block:Date} data-title="{DayOfMonthWithZero}.{MonthNumberWithZero}.{ShortYear}"{block:Date} data-player="{JSVideo-250}" class="video-zebra-{block:Post1}1{/block:Post1}{block:Post2}2{/block:Post2}{block:Post3}3{/block:Post3}{block:Post4}4{/block:Post4}{block:Post5}5{/block:Post5}{block:Post6}6{/block:Post6}{block:Post7}7{/block:Post7}{block:Post8}8{/block:Post8}{block:Post9}9{/block:Post9}">
+
+      <div class="post-player">{Video-500}</div>
+
+      {block:PostNotes}
+      <aside class="post-notes">
+        {PostNotes}
       </aside>
-    </div>
+      {/block:PostNotes}
+    </article>
+    {/block:Video}
+    {/block:Posts}
+    <!--/AJAX_REQUEST_MARKER-->
+  </section>
+  {/block:PermalinkPage}
+
+  <div id="sidebar">
+    <a href="http://arma.ni/fol-followgram"><img src="http://res.cloudinary.com/armani/image/upload/v1372176737/feed-on-followgram_qqgbxk.png"></a>
+    <aside id="sidebar-info-text" class="first">
+
+      <!--[if lt IE 9]>
+      <iframe src="http://armanissl.com/static/framesoflife/feed.php" width="250" height="1300" frameborder="0" allowTransparency="true"></iframe>
+      <![endif]-->
+      <img class="preload" src="http://res.cloudinary.com/armani/image/upload/v1372171704/fol-ajax-loader_palzrc.gif" title="loading">
+    </aside>
+  </div>
 </div>
-      
-  <script type="text/javascript">
-    /*
-     * Remove #site if inside a toolbar iframe.
-     * Do it immediately to prevent other scripts from wasting CPU-cycles on it.
-     */
-    (function($) {
-      var s = location.search;
-      // Important to get the top != self check, since reblogs will be
-      // redirected to the wrong URL (with ?tumblr-toolbar) since the origin
-      // from that page (because the toolbar iframe src includes that).
-      if(top != self && s.indexOf('tumblr-toolbar') != -1) {
-        $('#site').remove();
-        $('body').addClass('tumblr-toolbar');
-      }
-      
-    })(jQuery);
+
+<script type="text/javascript">
+/*
+* Remove #site if inside a toolbar iframe.
+* Do it immediately to prevent other scripts from wasting CPU-cycles on it.
+*/
+(function($) {
+  var s = location.search;
+  // Important to get the top != self check, since reblogs will be
+  // redirected to the wrong URL (with ?tumblr-toolbar) since the origin
+  // from that page (because the toolbar iframe src includes that).
+  if(top != self && s.indexOf('tumblr-toolbar') != -1) {
+    $('#site').remove();
+    $('body').addClass('tumblr-toolbar');
+  }
+
+  })(jQuery);
   </script>
 
 </body>
