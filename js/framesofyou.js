@@ -70,6 +70,9 @@ jQuery(function ($) {
                 return false;
             });
         });
+    }else{
+      // hide insta feed
+      $("#sidebar .contents").hide();
     }
     
     // Invoke the specified features and then calls their response callback.
