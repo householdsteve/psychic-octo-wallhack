@@ -301,9 +301,10 @@ jQuery(function ($) {
     function content_id_hook(content_id) {
         //console.log(content_id);
         if (videofymyfashion.settings.content_id_hook && content_id != ""){
-         var localizedId = content_id.split('_'),
-             idPart = 0;
-             localizedId = [localizedId[0].split(":")[1],localizedId[1].split(":")[1]];
+          var localizedId = content_id.split('_'),
+              idPart = 0,
+              pointmatch = (content_id.match(':'))? 1:0;
+              localizedId = [localizedId[0].split(":")[pointmatch],localizedId[1].split(":")[pointmatch]];
              
              if($.cookie('_a_country_code_') == undefined || $.cookie('_a_country_code_') == ""){
                  var caller = $.ajax({

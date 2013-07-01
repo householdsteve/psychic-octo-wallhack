@@ -67,10 +67,10 @@ function fetch($url) {
                   preg_match('/(http:\/\/p.videofy.me\/v\/)([0-9]+)/', $post->player[0]->embed_code, $matches);
                   $ids[] = $matches[2];
                 }
-                $vidinfo = fetch('http://www.videofy.me/jsonp_api?feature[videoinfo]='.implode(",",$ids));
+                $vidinfo = fetch('http://www.videofy.me/jsonp_api?feature[videoinfo]='.implode(",",$ids).'&no_callback=1');
                 $allvids = $vidinfo[0];
-                $allvids = str_replace( 'callback(', '', $allvids );
-                $allvids = substr_replace($allvids ,"",-2);
+                //$allvids = str_replace( 'callback(', '', $allvids );
+                //$allvids = substr_replace($allvids ,"",-2);
                 $object = json_decode( $allvids );
                 //echo "<pre>"; print_r($object); echo "</pre>";
                  foreach(array_reverse($object->videoinfo) as $vid):
