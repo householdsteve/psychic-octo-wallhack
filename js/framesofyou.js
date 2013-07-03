@@ -21,7 +21,7 @@ jQuery.cookie=function(name,value,options){if(typeof value!='undefined'){options
 // dont render old posts
 var bottom_reached = false,
     stop_tumblr_post = false,
-    block_post_at = "http://gatester.tumblr.com/post/54014171025/ajjjs-eyes"; // this string should be filled with last post id from old account
+    block_post_at = "http://armani.tumblr.com/post/53367308918/the-new-giorgio-and-emporio-armani-spring-summer"; // this string should be filled with last post id from old account
 
 jQuery(function ($) {
     var mindeg = -1;
@@ -427,14 +427,14 @@ jQuery(function ($) {
                         // Remove old tumblr toolbar if any, and add a new one:
                         dialog.find('.modal-dialog-header .modal-dialog-tumblr-toolbar')
                             .remove();
-                        dialog.find('.modal-dialog-header a.close').after(
-                            $('<iframe scrolling="no" frameborder="0" border="0"/>')
-                            .addClass('modal-dialog-tumblr-toolbar')
-                            .attr(
-                                'src',
-                                url + (url.indexOf('?') == -1 ? '?' : '&') + 'tumblr-toolbar'
-                            )
-                        );
+                        // dialog.find('.modal-dialog-header a.close').after(
+                        //                             $('<iframe scrolling="no" frameborder="0" border="0"/>')
+                        //                             .addClass('modal-dialog-tumblr-toolbar')
+                        //                             .attr(
+                        //                                 'src',
+                        //                                 url + (url.indexOf('?') == -1 ? '?' : '&') + 'tumblr-toolbar'
+                        //                             )
+                        //                         );
                         $(document).trigger('inlineajaxdomready');
                     }
                 })
