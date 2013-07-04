@@ -19,7 +19,7 @@
           }
         </style>
     </head>
-    <body style="background:transparent"><a href="http://arma.ni/fol">
+    <body style="background:transparent"><a href="http://arma.ni/fol" target="_blank">
       <?php
           $c = curl_init();
           curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
