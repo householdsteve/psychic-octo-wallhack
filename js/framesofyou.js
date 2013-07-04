@@ -291,7 +291,7 @@ jQuery(function ($) {
           productUrl = "http://www.armani.com/itemSearchAPI.asp?site=giorgioarmani&cod10="+id[part];
     
      var elementLink = $("<a/>",{'href':productUrl,"class":"product-image"})
-                       .append($('<span/>').append($('<img/>',{src:productSrc,'width':265})))
+                       .append($('<span/>').append($('<img/>',{src:productSrc,'width':265}).attr("width",265)))
                        .append($('<img/>',{src:"http://res.cloudinary.com/armani/image/upload/v1372255678/get-these-on-framesoflife_com_wihuuc.png"}))
 
      parentHolder.after(elementLink);

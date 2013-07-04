@@ -29,6 +29,7 @@ function fetch($url) {
             background:url("http://cdn2.yoox.biz/Os/armanigroup/giorgioarmani/images/fol2/bg-fol2.jpg") repeat scroll center top #FFFFFF; 
             cursor:pointer;
           }
+          a img, a, img {border: none; }
           .wrapper {
             max-width:809px;
             width:auto;
