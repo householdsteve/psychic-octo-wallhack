@@ -1,5 +1,6 @@
 <?php
 include "parse/parse.php";
+include "fb.php";
 $secure_connection = false;
 $secure_link = "https://cloudinary-a.akamaihd.net/armani/image/upload/";
 $insecure_link = "http://res.cloudinary.com/armani/image/upload/";
@@ -8,6 +9,7 @@ if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
 
     $secure_connection = true;
 }
+
 function fetch($url) {
     $curl = curl_init();
     $timeout = 5; // set to zero for no timeout
@@ -35,6 +37,9 @@ $u = new parseUser();
 $u->username = "steve";
 $u->password = "20armani13";
 $acc = $u->login();
+
+// get the facebook page info based on user
+$fbdata = signed_request_data($_POST['signed_request'],'dae2f933990c664c01730fe4f5255c62');
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -48,6 +53,9 @@ $acc = $u->login();
         <link rel="stylesheet" href="<?php echo ($secure_connection) ? 'https://armanissl.com/static/': 'http://static.armanissl.com/'; ?>css/main.css" type="text/css" media="screen" title="normalize" charset="utf-8">
         <link rel="stylesheet" href="<?php echo ($secure_connection) ? 'https://armanissl.com/static/': 'http://static.armanissl.com/'; ?>css/normalize.min.css" type="text/css" media="screen" title="main" charset="utf-8">
 <link href='//fonts.googleapis.com/css?family=Lato:700,300' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 9]>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+        <![endif]-->
         
         <style type="text/css" media="screen">
           body {  
@@ -160,6 +168,8 @@ $acc = $u->login();
             font-size:30px;
             line-height:30px;
             text-align:left;
+            color:#fff;
+            width:100%;
           }
           legend small {
             color:#333;
@@ -194,6 +204,7 @@ $acc = $u->login();
               </fieldset>
                 <input type="email" name="email" placeholder="E-Mail: your@email.com" value="" id="email" required/>
                 <input type="hidden" name="country" value="<?php echo $location['countryCode'];?>" id="country">
+                <input type="hidden" name="likes_us" value="<?php echo ($fbdata['page']['liked']) ? 'true':'false';?>" id="likes_us">
                 <input type="submit" value="Send &rarr;">
                 <div class="accept">
                   <input type="checkbox" name="accept" id="accept" checked><span>By submitting this form I accept these <a href="#" id="displayterms">terms and conditions</a></span>
@@ -203,7 +214,7 @@ $acc = $u->login();
             <p>
               <h1>Promotion Terms and Conditions</h1>
               <p>
-              1. This competition (hereinafter the “promotion”) is run by Spotify.
+              1. This competition (hereinafter the “promotion”) is run by Spotify, Golden House, 30 Great Pulteney Street, London, W1F 9NN, "Spotify".
             </p><p>
               2. By entering this promotion you agree to these terms and conditions which will at that time become binding between you and Spotify.  Your participation in the promotion is in consideration for Spotify allowing you to enter it and giving you the opportunity to win.
               </p><p>
@@ -249,14 +260,25 @@ $acc = $u->login();
       <script src="<?php echo ($secure_connection) ? 'https://armanissl.com/static/': 'http://static.armanissl.com/'; ?>js/jquery.parse.js" type="text/javascript" charset="utf-8"></script>
       
       <script type="text/javascript" charset="utf-8">
-      $.parse.init({
-          session_token : "<?php echo $acc->sessionToken;?>",
-          app_id:"XKadikS4ALD5N3VNcFeJZb3iRkblI8tbO0yEXpas",
-          rest_key:"zyaf7k5ftiIc0ugQye5UnCMzOY365t1CrGHHWHB8"
-      });
-          FB.Canvas.setSize();
+         $.parse.init({
+              session_token : "<?php echo $acc->sessionToken;?>",
+              app_id:"XKadikS4ALD5N3VNcFeJZb3iRkblI8tbO0yEXpas",
+              rest_key:"zyaf7k5ftiIc0ugQye5UnCMzOY365t1CrGHHWHB8"
+          });
+          FB.init({
+              appId: '216035795213266', 
+              status: true, 
+              cookie: true, 
+              xfbml: true
+          });
+
+          $(window).load(function(){
+              //resize our tab app canvas after our content has finished loading
+              FB.Canvas.setSize();
+          });
           
           $(function(){
+            $.support.cors = true;
             $('[placeholder]').parents('form').submit(function() {
               $(this).find('[placeholder]').each(function() {
                 var input = $(this);
