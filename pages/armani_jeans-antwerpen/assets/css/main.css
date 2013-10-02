@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+}
+section {
+  position: relative;
+}
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
+a:focus,
+a.active:focus {
+  outline: none;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+/* ------- HIDE CONTENT SHOW IE MESSAGE --------- */
+#noie {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: url("https://cloudinary-a.akamaihd.net/armani/image/upload/v1373965091/60_a75uxc.png") repeat top left;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#noie div {
+  width: 400px;
+  background: black;
+  padding: 20px 20px 20px 20px;
+  margin: 160px auto 0 auto;
+  text-align: center;
+  border: solid 1px #fff;
+}
+html.lt-ie9 #noie {
+  display: block;
+}
+/* ------- HIDE CONTENT SHOW IE MESSAGE --------- */
