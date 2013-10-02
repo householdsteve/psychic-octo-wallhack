@@ -2,7 +2,11 @@
 
     <div class="jumbotron">
       <div class="container">
+        {% if pagevars.secure %}
         <h1>Hello, world!</h1>
+        {% else %}
+        <h1>Hello, insecure world!</h1>
+        {% endif %}
         <p>...</p>
         <p><a class="btn btn-primary btn-lg">Learn more</a></p>
       </div>

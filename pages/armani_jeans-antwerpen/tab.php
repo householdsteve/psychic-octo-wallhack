@@ -1,27 +1,7 @@
 <?php
 include "parse/parse.php";
 include "fb.php";
-$secure_connection = false;
-$secure_link = "https://cloudinary-a.akamaihd.net/armani/image/upload/";
-$insecure_link = "http://res.cloudinary.com/armani/image/upload/";
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
-    || $_SERVER['SERVER_PORT'] == 443) {
 
-    $secure_connection = true;
-}
-
-function fetch($url) {
-    $curl = curl_init();
-    $timeout = 5; // set to zero for no timeout
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-    $html = curl_exec($curl);
-    $content_type = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
-    curl_close($curl);
-    return array($html, $content_type);
-}
 
 include('ip2locationlite.class.php');
  

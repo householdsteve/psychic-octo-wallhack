@@ -6,6 +6,8 @@ if(!file_exists(__DIR__ .'/vendor/autoload.php')) {
 	exit(1);
 }
 require __DIR__ . '/vendor/autoload.php';
+require 'resources/base.php';
+$is_page_secure = find_secure_connection();
 // OK MODIFY AFTER HERE
 
 
@@ -35,6 +37,7 @@ require __DIR__ . '/vendor/autoload.php';
     $pagevars = (object) array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
           "baseurl"=> "http://localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
+          "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
           "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
