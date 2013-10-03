@@ -1,5 +1,5 @@
 $.parse.init({
-    session_token : "",
+    session_token : AApp.session_token,
     app_id:"XKadikS4ALD5N3VNcFeJZb3iRkblI8tbO0yEXpas",
     rest_key:"zyaf7k5ftiIc0ugQye5UnCMzOY365t1CrGHHWHB8"
 });
