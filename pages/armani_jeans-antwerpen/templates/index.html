@@ -12,4 +12,32 @@
       </div>
     </div>
     
+      <form id="signup" action="#" method="get" accept-charset="utf-8">
+          <fieldset class="form-songs">
+            <legend>Share your top 5 summer songs playlist and win a Spotify 3 month premium access card! <small>(UK Residents only)</small></legend>
+            <div class="form-row">
+              <label for="song_one">1</label><input type="text" name="song_one" placeholder="Song Title, Artist" value="" id="song_one" required/>
+            </div>
+            <div class="form-row">
+              <label for="song_two">2</label><input type="text" name="song_two" placeholder="Song Title, Artist" value="" id="song_two" required/>
+            </div>
+            <div class="form-row">
+              <label for="song_three">3</label><input type="text" name="song_three" placeholder="Song Title, Artist" value="" id="song_three" required/>
+            </div>
+            <div class="form-row">
+              <label for="song_four">4</label><input type="text" name="song_four" placeholder="Song Title, Artist" value="" id="song_four" required/>
+            </div>
+            <div class="form-row">
+              <label for="song_five">5</label><input type="text" name="song_five" placeholder="Song Title, Artist" value="" id="song_five" required/>
+            </div>
+          </fieldset>
+            <input type="email" name="email" placeholder="E-Mail: your@email.com" value="" id="email" required/>
+            <input type="hidden" name="country" value="<?php echo $location['countryCode'];?>" id="country">
+            <input type="hidden" name="likes_us" value="<?php echo ($fbdata['page']['liked']) ? 'true':'false';?>" id="likes_us">
+            <input type="submit" value="Send &rarr;">
+            <div class="accept">
+              <input type="checkbox" name="accept" id="accept" checked><span>By submitting this form I accept these <a href="#" id="displayterms">terms and conditions</a></span>
+            </div>
+      </form>
+    
 {% include 'footer.html' %}

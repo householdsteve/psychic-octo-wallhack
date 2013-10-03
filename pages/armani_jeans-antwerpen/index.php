@@ -1,60 +1,43 @@
 <?php
-// DO NOT MODIFY THESE FIRST SETTINGS
-// Include the composer autoloader
-if(!file_exists(__DIR__ .'/vendor/autoload.php')) {
-	echo "The 'vendor' folder is missing. You must run 'composer update' to resolve application dependencies.\nPlease see the README for more information.\n";
-	exit(1);
-}
-require __DIR__ . '/vendor/autoload.php';
-require 'resources/base.php';
-$is_page_secure = find_secure_connection();
-// OK MODIFY AFTER HERE
+set_include_path(dirname(__FILE__).'/resources/');
+require_once(__DIR__.'/resources/Zend/Loader.php');
+include __DIR__.'/resources/Zend/Cache.php';
 
 
-// LOAD TWIG SETTINGS
-    Twig_Autoloader::register();
-    $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
-    $twig = new Twig_Environment($loader);
+  // define cache options
+  $frontendOptions = array(
+     'lifetime' => 300,
+     'automatic_serialization' => true
+  );
 
-    $numberfilter = new Twig_SimpleFilter('number_format', function ($str,$length=2) {
-    	  return number_format($str, $length, '.', '');
-    });
+  $backendOptions = array(
+      'cache_dir' => 'cache/output'
+  );
 
-    $twig->addFilter($numberfilter);
-
-    // twig template caching
-    // $twig = new Twig_Environment($loader, array(
-    //     'cache' => __DIR__.'/cache',
-    // ));
-
-
-// THIS GETS DATA FROM THE URL AND PROCESSES IT FOR US
-    $URLPARTS = (isset($_REQUEST['q'])) ? explode("/",$_REQUEST['q']) : array("index","index");
-    $URLARGS = array_slice($URLPARTS, 1);
-    
-
-// THESE ARE THE DEFAULT PAGE VARIABLE
-    $pagevars = (object) array(
-          "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
-          "baseurl"=> "http://localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
-          "secure" => $is_page_secure,
-          "nav" => "", // send an object here
-          "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
-          "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
-          "title"=>"XXXXXXX", // THE SECOND PART OF PAGE TITLE. THIS SHOULD BE EXTENDED BELOW BASED ON CONTENT
-          "description" => "XXXXX", // THIS IS FOR META TAGS
-          "keywords" => "XXX, YYY" // THIS TOO, THESE BOTH SHOULD BE EXTENDED BASED ON CONTEXT
-     );
-
-// THIS PROCESSES THE FIRST PART OF THE URL TO DELEGATE ACTIONS
-    switch($URLPARTS[0]):
-      case "index":
-      default: // INCASE IT DOESNT FIND ANYTHING ELSE AT LEAST DO THIS:
-          $pagevars->args = $URLARGS;
-          echo $twig->render('index.html', array(
-                              'pagevars'=> $pagevars
-                              )); 
-      break;
+  $URLPARTS = (isset($_REQUEST['q'])) ? explode("/",$_REQUEST['q']) : array("index","index");
   
-    endswitch;
+  try {
+    // configure cache
+    $cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
+    $id = $URLPARTS[0];
+    
+    if($_SERVER["APPCACHE"] == "true"){
+        // if data not present in cache // generate and save it to cache for next run
+        if(!($content = $cache->load($id))) {
+          require_once(__DIR__.'/application.php');
+      
+          $c = process_page_call($URLPARTS);
+      
+          $cache->save($c, $id);
+          $content = $c;
+        }
+        echo $content;
+    }else{
+        require_once(__DIR__.'/application.php');
+        echo process_page_call($URLPARTS);
+    }
+    
+  } catch (Exception $e) {
+    die ('ERROR: ' . $e->getMessage());
+  }
 ?>

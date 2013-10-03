@@ -1,8 +1,9 @@
 SetEnv APPENV local
+SetEnv APPCACHE false
 
 RewriteEngine on
-#RewriteBase /~householdsteve/pofdwebstores/dfiant/
-RewriteBase /
+#RewriteBase /Library/WebServer/Documents/2013/static/pages/armani_jeans-antwerpen/
+#RewriteBase /
 RewriteCond %{REQUEST_URI} ^/cache/images/
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
 RewriteRule (.*) /generate.php?$1 [L]

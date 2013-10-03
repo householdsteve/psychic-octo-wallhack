@@ -17,7 +17,6 @@ $(window).load(function(){
 });
 
 $(function(){
-    console.log(AApp)
       $.support.cors = true;
       $('[placeholder]').parents('form').submit(function() {
         $(this).find('[placeholder]').each(function() {
