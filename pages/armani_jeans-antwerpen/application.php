@@ -39,7 +39,7 @@ function process_page_call($URLPARTS){
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = (object) array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
-          "baseurl"=> "http://localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
+          "baseurl"=> "//localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
           "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
@@ -71,7 +71,7 @@ function process_page_call($URLPARTS){
           $u->username = "steve";
           $u->password = "20armani13";
           $parse_user = $u->login();
-          //echo "<pre>".print_r($parse_user)."</pre>";
+          //echo "<pre>".print_r($location)."</pre>";
 
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
           $fbdata = signed_request_data($_POST['signed_request'],'dae2f933990c664c01730fe4f5255c62');

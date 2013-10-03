@@ -1,11 +1,11 @@
 {% include 'header.html' %}
-{{ parse.sessionToken }}
+
     <div class="jumbotron">
       <div class="container">
         {% if pagevars.secure %}
         <h1>Hello, world!</h1>
         {% else %}
-        <h1>Hello, insecure world!</h1>
+        <h1>Hello, insecure world! test meaaa</h1>
         {% endif %}
         <p>...</p>
         <p><a class="btn btn-primary btn-lg">Learn more</a></p>
@@ -32,8 +32,8 @@
             </div>
           </fieldset>
             <input type="email" name="email" placeholder="E-Mail: your@email.com" value="" id="email" required/>
-            <input type="hidden" name="country" value="<?php echo $location['countryCode'];?>" id="country">
-            <input type="hidden" name="likes_us" value="<?php echo ($fbdata['page']['liked']) ? 'true':'false';?>" id="likes_us">
+            <input type="hidden" name="country" value="{{ location['countryCode'] }}" id="country">
+            <input type="hidden" name="likes_us" value="{{ facebook['page']['liked'] }}" id="likes_us">
             <input type="submit" value="Send &rarr;">
             <div class="accept">
               <input type="checkbox" name="accept" id="accept" checked><span>By submitting this form I accept these <a href="#" id="displayterms">terms and conditions</a></span>
