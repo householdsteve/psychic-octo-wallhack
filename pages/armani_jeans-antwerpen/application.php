@@ -46,7 +46,7 @@ function process_page_call($URLPARTS){
           "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
           "title"=>"XXXXXXX", // THE SECOND PART OF PAGE TITLE. THIS SHOULD BE EXTENDED BELOW BASED ON CONTENT
           "description" => "XXXXX", // THIS IS FOR META TAGS
-          "keywords" => "XXX, YYY" // THIS TOO, THESE BOTH SHOULD BE EXTENDED BASED ON CONTEXT
+          "keywords" => "XXX, YYY", // THIS TOO, THESE BOTH SHOULD BE EXTENDED BASED ON CONTEXT
           "og" => array("image"=> "",
                         "title"=> "") // THESE ARE FOR SOCIAL CHANNELS LIKE FACEBOOK WHERE AN IMAGE IS SHARED.
      );
