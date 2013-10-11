@@ -67,6 +67,23 @@ section.forms .holder {
 figure.down {
   margin-top: 50px;
 }
+figure div.vote {
+  display: none;
+}
+figure:hover div.vote {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  width: 175px;
+  height: 175px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 175px;
+  text-align: center;
+  -webkit-border-radius: 88px;
+  -moz-border-radius: 88px;
+  border-radius: 88px;
+}
 #policy {
   display: none;
 }
