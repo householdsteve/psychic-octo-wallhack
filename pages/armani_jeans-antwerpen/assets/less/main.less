@@ -7,6 +7,7 @@
 @base_grey: #eee;
 @med_grey: #ccc;
 @dark: #a1a1a1;
+@ajred: #dc291e;
 @black: #000;
 @fbwidth: 810px;
 
@@ -26,6 +27,7 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight:lighter;
+	font-family: @font_stack;
 }
 
 section {position:relative;}
@@ -37,7 +39,7 @@ a::-moz-focus-inner {border:0;}
 
 
 .principal {
-  background:blue;
+  background: #DDD url('../images/bg.jpg') no-repeat top center;
   width:@fbwidth;
   &.step1 {
     section.forms .holder {
@@ -67,6 +69,9 @@ section {
      width: @fbwidth * 3;
      position:relative;
      left:0px; 
+    }
+    #djs input {
+      display:none;
     }
   }
 }
@@ -102,6 +107,42 @@ figure {
 #policy {
   display:none;
 }
+
+
+/* ------- F --------- */
+
+#logo {
+  background: url('../images/ajogo.png') no-repeat scroll top left;
+  background-size:100%;
+  width: 233px;
+  height: 104px;
+  display:block;
+  margin:50px auto;
+  text-indent:-9999em;
+}
+
+.invite {
+  position:relative;
+  margin:0 auto;
+  text-align:center;
+  background:green;
+  }
+  
+.invite h2{font-size:34px;margin-top:0;}
+.invite h1{font-size:80px; 
+          line-height:14px;
+          z-index:2;}
+.invite h3{color: @ajred;font-size:30px;z-index:1;}
+
+header {background:red; height:155px; margin:0;}
+
+.actions {
+  &.container{background:blue;
+              margin:56px;}
+}
+
+
+/* ------- F --------- */
 
 
 /* --------- FORMATTING FOR FORMS ----------------- */
@@ -196,3 +237,8 @@ html.lt-ie9 #noie {
   display:block;
 }
 /* ------- HIDE CONTENT SHOW IE MESSAGE --------- */
+
+
+
+
+

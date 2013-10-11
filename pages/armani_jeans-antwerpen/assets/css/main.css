@@ -18,6 +18,7 @@ h4,
 h5,
 h6 {
   font-weight: lighter;
+  font-family: 'Oswald', sans-serif;
 }
 section {
   position: relative;
@@ -36,7 +37,7 @@ a::-moz-focus-inner {
   border: 0;
 }
 .principal {
-  background: blue;
+  background: #dddddd url('../images/bg.jpg') no-repeat top center;
   width: 810px;
 }
 .principal.step1 section.forms .holder {
@@ -59,6 +60,9 @@ section.forms .holder {
   width: 2430px;
   position: relative;
   left: 0px;
+}
+section.forms #djs input {
+  display: none;
 }
 .slider {
   width: 810px;
@@ -87,6 +91,46 @@ figure:hover div.vote {
 #policy {
   display: none;
 }
+/* ------- F --------- */
+#logo {
+  background: url('../images/ajogo.png') no-repeat scroll top left;
+  background-size: 100%;
+  width: 233px;
+  height: 104px;
+  display: block;
+  margin: 50px auto;
+  text-indent: -9999em;
+}
+.invite {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  background: green;
+}
+.invite h2 {
+  font-size: 34px;
+  margin-top: 0;
+}
+.invite h1 {
+  font-size: 80px;
+  line-height: 14px;
+  z-index: 2;
+}
+.invite h3 {
+  color: #dc291e;
+  font-size: 30px;
+  z-index: 1;
+}
+header {
+  background: red;
+  height: 155px;
+  margin: 0;
+}
+.actions.container {
+  background: blue;
+  margin: 56px;
+}
+/* ------- F --------- */
 /* --------- FORMATTING FOR FORMS ----------------- */
 /*
 form input[type="text"]{
