@@ -1,43 +1,254 @@
 {% include 'header.html' %}
 
-    <div class="jumbotron">
-      <div class="container">
-        {% if pagevars.secure %}
-        <h1>Hello, world!</h1>
-        {% else %}
-        <h1>Hello, insecure world! test meaaa</h1>
-        {% endif %}
-        <p>...</p>
-        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+<section class="main">
+  <header>
+    <span id="logo">Armani | Jeans</span>
+  </header>
+  
+  <article class="invite">
+    <h2>INVITES YOU TO THE NEW STORE OPENING</h2>
+    <h1>ANTWERPEN</h1>
+    <h3>OCTOBER 24TH</h3>  
+  </article>
+  
+  <article class="actions container">
+    <div class="row">
+      <div class="col-md-3 col-md-offset-2 text-center">
+        VOTE FOR YOUR 
+        FAVOURITE DEEJAY
+      </div>
+      <div class="col-md-2 circle">
+        <span class="small">AND</span>
+      </div>
+      <div class="col-md-3 text-center">
+        GET INVITED!
       </div>
     </div>
+  </article>
     
-      <form id="signup" action="#" method="get" accept-charset="utf-8">
-          <fieldset class="form-songs">
-            <legend>Share your top 5 summer songs playlist and win a Spotify 3 month premium access card! <small>(UK Residents only)</small></legend>
-            <div class="form-row">
-              <label for="song_one">1</label><input type="text" name="song_one" placeholder="Song Title, Artist" value="" id="song_one" required/>
+</section>
+
+<section class="forms">
+  <div class="holder clearfix">
+  <form class="djs slider" id="djs" action="#djs" method="post" accept-charset="utf-8">
+    <div class="row">
+      <figure class="col-md-4 col-sm-4 col-xs-4 down">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+      
+      <figure class="col-md-4 col-sm-4 col-xs-4 up">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+      
+      <figure class="col-md-4 col-sm-4 col-xs-4 down">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+      
+      <figure class="col-md-4 col-sm-4 col-xs-4 up">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+      
+      <figure class="col-md-4 col-sm-4 col-xs-4 down">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+      
+      <figure class="col-md-4 col-sm-4 col-xs-4 up">
+        <img src="assets/images/temp.png" width="175" height="175" alt="CHARLOTTE GESQUIèRE">
+        <figcaption><input type="radio" name="deejay" value="CHARLOTTE GESQUIèRE"><span class="name">CHARLOTTE GESQUIèRE</span></figcaption>
+      </figure>
+    </div>
+    
+    <input type="submit" class="submit arrow" value=">">
+    <a href="#" class="close">X</a>
+    <div id="voted-for"><!-- PLACEHOLDER HERE --></div>
+    
+  </form>
+  
+  <form class="signup slider" id="signup" action="#signup" method="post" accept-charset="utf-8">
+    <fieldset class="fields">
+      <div class="row">  
+        <div class="form-group">
+            <label for="name" class="col-md-7 control-label">Title</label>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="radio" class="stylized" name="gender" value="mrs"><span>Mrs.</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="stylized" name="gender" value="ms"><span>Ms.</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="stylized" name="gender" value="mr"><span>Mr.</span>
+                </div>
+              </div>
             </div>
-            <div class="form-row">
-              <label for="song_two">2</label><input type="text" name="song_two" placeholder="Song Title, Artist" value="" id="song_two" required/>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="name" class="col-md-7 control-label">Name</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="name" name="name" placeholder="John" required>
             </div>
-            <div class="form-row">
-              <label for="song_three">3</label><input type="text" name="song_three" placeholder="Song Title, Artist" value="" id="song_three" required/>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="surname" class="col-md-7 control-label">Surname</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="surname" name="surname" placeholder="Smith" required>
             </div>
-            <div class="form-row">
-              <label for="song_four">4</label><input type="text" name="song_four" placeholder="Song Title, Artist" value="" id="song_four" required/>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="dob" class="col-md-7 control-label">Date of Birth</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="dob" name="dob" placeholder="DD/MM/YYYY" required>
             </div>
-            <div class="form-row">
-              <label for="song_five">5</label><input type="text" name="song_five" placeholder="Song Title, Artist" value="" id="song_five" required/>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="mobile" class="col-md-7 control-label">Mobile Phone</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+32 333 645 7845" required>
             </div>
-          </fieldset>
-            <input type="email" name="email" placeholder="E-Mail: your@email.com" value="" id="email" required/>
-            <input type="hidden" name="country" value="{{ location['countryCode'] }}" id="country">
-            <input type="hidden" name="likes_us" value="{{ facebook['page']['liked'] }}" id="likes_us">
-            <input type="submit" value="Send &rarr;">
-            <div class="accept">
-              <input type="checkbox" name="accept" id="accept" checked><span>By submitting this form I accept these <a href="#" id="displayterms">terms and conditions</a></span>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="email" class="col-md-7 control-label">Email</label>
+            <div class="col-md-5">
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@domain.com" required>
             </div>
-      </form>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="address" class="col-md-7 control-label">Street Address</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="address" name="address" placeholder="123 Main St." required>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="city" class="col-md-7 control-label">City</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="city" name="city" placeholder="Antwerpen" required>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="province" class="col-md-7 control-label">Province/State</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="province" name="province" placeholder="" required>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="postalcode" class="col-md-7 control-label">Postal Code</label>
+            <div class="col-md-5">
+              <input type="text" class="form-control" id="postalcode" name="postalcode" placeholder="20095" required>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <label for="country" class="col-md-7 control-label">Country</label>
+            <div class="col-md-5">
+              {% include 'countries.html' %}
+            </div>
+        </div>
+      </div>
+    </fieldset>
+    
+    <fieldset class="requests">
+      <legend>I’ve read the <a href="#" class="underline" id="privacy">Privacy info</a> and I authorize the use of my personal data for the following purposes:</legend>
+      <div id="policy">
+        {% include 'policy.html' %}
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <div class="col-md-5">
+              <input type="checkbox" class="stylized" name="emails" value="true" id="emails">
+            </div>
+            <div class="col-md-5">
+              Marketing, to receive information, catalogues, invitations, gifts and other services by different channels, like mailings, email, sms,telephone contacts, as well as the participation to events, activities, loyalty initiatives, marketing researches.
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">  
+        <div class="form-group">
+            <div class="col-md-5">
+              <input type="checkbox" class="stylized" name="sharingagroup" value="true" id="sharingagroup">
+            </div>
+            <div class="col-md-5">
+              Sharing for marketing use with other companies of the Armani Group.
+            </div>
+        </div>
+      </div>
+      
+    </fieldset>
+    
+    <fieldset class="submit">
+      <input type="hidden" name="country" value="{{ location['countryCode'] }}" id="country">
+      <input type="hidden" name="likes_us" value="{{ facebook['page']['liked'] }}" id="likes_us">
+      
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <input type="submit" class="btn btn-primary btn-lg btn-block" value="SIGN UP!">
+        </div>
+      </div>      
+    </fieldset>
+  </form>
+  
+  <article class="thanks slider" id="thanks">
+    <div class="col-md-6 col-md-offset-3 circle">
+      <h3>THANKS FOR SIGNING UP! WE ARE WORKING YOU INTO THE GUESTLIST.</h3>
+      <h4>
+        PLEASE CLICK HERE TO DOWNLOAD YOUR INVITE.
+      </h4>
+      <small>Only 100 invites are available so invite your friends now!</small>
+      <span class="large">DO IT</span>
+    </div>
+  </article>
+ </div>
+</section>
+
+
+<section class="footer container">
+  <footer class="row">
+    <div class="col-md-3 col-md-offset-3">
+      <h3>SHARE IT WITH YOUR FRIENDS</h3>
+      
+    </div>
+    
+    <div class="col-md-2">
+      <a href="#" class="facebook">facebook</a>
+      <a href="#" class="twitter">twitter</a>
+    </div>
+  </footer>
+</section>
     
 {% include 'footer.html' %}

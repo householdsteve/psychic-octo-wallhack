@@ -5,6 +5,14 @@
     <h2><a href="http://chrome.com">Why not try Chrome?</a></h2>
   </div>
 </div>
+<script id="item-template" type="text/x-handlebars-template">
+  <div id="{{contentId}}" class="template col-md-6{{contentClass}}">
+    <img src="{{imgSrc}}">
+    <div class="counter-overlay">{{counter}}</div>
+    <footer>{{description}}</footer>
+  </div>
+</script>
+
 <div id="fb-root"></div>
         <script type="text/javascript" charset="utf-8">
         	AApp = {"basePath": "{{pagevars.baseurl}}", "session_token": "{{ parse.sessionToken }}"};
@@ -16,6 +24,8 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+        <script src="{{ pagevars.baseurl }}/assets/js/jquery.icheck.min.js"></script>
         <script src="{{ pagevars.baseurl }}/assets/js/jquery.parse.js"></script>
         <script src="{{ pagevars.baseurl }}/assets/js/main.js"></script>
         <script>

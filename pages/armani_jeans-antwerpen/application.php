@@ -44,7 +44,7 @@ function process_page_call($URLPARTS){
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
           "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
-          "title"=>"XXXXXXX", // THE SECOND PART OF PAGE TITLE. THIS SHOULD BE EXTENDED BELOW BASED ON CONTENT
+          "title"=>"INVITES YOU TO THE NEW STORE OPENING", // THE SECOND PART OF PAGE TITLE. THIS SHOULD BE EXTENDED BELOW BASED ON CONTENT
           "description" => "XXXXX", // THIS IS FOR META TAGS
           "keywords" => "XXX, YYY", // THIS TOO, THESE BOTH SHOULD BE EXTENDED BASED ON CONTEXT
           "og" => array("image"=> "",
