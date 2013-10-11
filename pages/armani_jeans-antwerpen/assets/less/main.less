@@ -60,7 +60,7 @@ a::-moz-focus-inner {border:0;}
 
 section {
   &.main {
-    height:300px;
+    header {height:105px; margin:30px 0px;}
   }
   &.forms {
     overflow:hidden;
@@ -73,6 +73,33 @@ section {
     #djs input {
       display:none;
     }
+  }
+}
+
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.circleer (@radius: 5px) {
+  .rounded-corners(@radius);
+  width:@radius;
+  height:@radius;
+}
+
+.circle {
+  .small {
+    .circleer(70px);
+    border:1px @ajred solid;
+    display:block;
+    text-align:center;
+    line-height:70px;
+  }
+  .large {
+    
   }
 }
 
@@ -98,9 +125,7 @@ figure {
     left:0;
     line-height:175px;
     text-align:center;
-    -webkit-border-radius: 88px;
-    -moz-border-radius: 88px;
-    border-radius: 88px;
+    .rounded-corners(88px);
   }
 }
 
@@ -117,7 +142,7 @@ figure {
   width: 233px;
   height: 104px;
   display:block;
-  margin:50px auto;
+  margin:0 auto;
   text-indent:-9999em;
 }
 
@@ -125,20 +150,27 @@ figure {
   position:relative;
   margin:0 auto;
   text-align:center;
-  background:green;
+  h2 {
+    font-size:28px;
+    margin-top:0;
   }
+  h1 {
+    font-size:70px; 
+    line-height:14px;
+    z-index:2;
+  }
+  h3 {
+    color: @ajred;
+    font-size:24px;
+    z-index:1;
+    letter-spacing:3px;
+  }
+}
   
-.invite h2{font-size:34px;margin-top:0;}
-.invite h1{font-size:80px; 
-          line-height:14px;
-          z-index:2;}
-.invite h3{color: @ajred;font-size:30px;z-index:1;}
-
-header {background:red; height:155px; margin:0;}
-
 .actions {
-  &.container{background:blue;
-              margin:56px;}
+  &.container{
+    margin:56px 0px;
+  }
 }
 
 
