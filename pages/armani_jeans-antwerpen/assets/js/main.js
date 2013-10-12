@@ -17,41 +17,6 @@ $(window).load(function(){
 
 $.support.cors = true;
 
-$(function(){
-
-    $("#privacy").click(function(e){
-      $("#policy").slideDown(600);
-      // $('body,html').animate({
-      //              scrollTop: $("#terms").offset().top
-      //            }, 800);
-      return false;
-    });
-    
-
-    $("#signupereere").on("submit",function(e){return false;}).validate({
-      errorElement:"em",
-      rules: {
-          accept:"required"
-        },
-      submitHandler: function(form) {
-        var data = {}
-        $.each($(form).serializeArray(),function(i,v){
-          data[v.name] = v.value;
-        });
-        $.parse.post('signups',data, function(json){
-          //console.log(json);
-          var dek = 300;
-          if(json.objectId != ""){
-            $(form).css({opacity:1}).animate({opacity:0},dek,function(){$(form).hide()});
-            $("#success").delay(dek).css({opacity:0}).show().animate({opacity:1},dek);
-          }
-        });
-        return false;
-      }
-     });
- 
- });
- 
  /*global jQuery, Handlebars */
  jQuery(function ($) {
  	'use strict';
@@ -107,9 +72,12 @@ $(function(){
  		  this.$changeSelection = $("a.close");
  		  this.$votedFor = $("#voted-for");
  		  this.$djs = $("figure", this.$djForm);
+ 		  this.$privacy = $("#privacy");
+ 		  this.$privacyText = $("#policy");
 
  		},
  		bindEvents: function () {
+ 		  this.$privacy.on("click",this.loadPrivacy);
  		  this.$changeSelection.on("click",this.deactivateSelection);
  		  this.$djs.each(function(i,v){
  		    var o = $(this);
@@ -132,6 +100,29 @@ $(function(){
            App.slideForm();
          }
         });
+        
+        
+        $("#signupereere").on("submit",function(e){return false;}).validate({
+          errorElement:"em",
+          rules: {
+              accept:"required"
+            },
+          submitHandler: function(form) {
+            var data = {}
+            $.each($(form).serializeArray(),function(i,v){
+              data[v.name] = v.value;
+            });
+            $.parse.post('signups',data, function(json){
+              //console.log(json);
+              var dek = 300;
+              if(json.objectId != ""){
+                $(form).css({opacity:1}).animate({opacity:0},dek,function(){$(form).hide()});
+                $("#success").delay(dek).css({opacity:0}).show().animate({opacity:1},dek);
+              }
+            });
+            return false;
+          }
+         });
  		  
  		},
  		removeEvents: function(){
@@ -142,6 +133,11 @@ $(function(){
  		    o.off("mouseleave",App.hoverOutSelection); 		    
  		    o.children("input").off("click",function(e){e.stopImmediatePropagation();});
  		  });
+ 		},
+ 		loadPrivacy: function(e){
+ 		  e.stopImmediatePropagation();
+ 		  App.$privacyText.slideDown(600);
+ 		  return false;
  		},
  		slideForm: function(){
  		  var lp = App.currentLeftPosition-810;

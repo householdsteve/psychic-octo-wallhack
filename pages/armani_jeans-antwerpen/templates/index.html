@@ -81,12 +81,13 @@
     
   </form>
   
-  <form class="signup slider" id="signup" action="#signup" method="post" accept-charset="utf-8">
-    <fieldset class="fields">
-      <div class="row">  
+  <form class="signup slider container" id="signup" action="#signup" method="post" accept-charset="utf-8">
+    <div class="col-md-8 col-md-offset-2">
+    <fieldset class="fields container">
+      <div class="row gender">  
         <div class="form-group">
-            <label for="name" class="col-md-7 control-label">Title</label>
-            <div class="col-md-5">
+            <label for="name" class="col-md-4 control-label">Title</label>
+            <div class="col-md-8">
               <div class="row">
                 <div class="col-md-4">
                   <input type="radio" class="stylized" name="gender" value="mrs"><span>Mrs.</span>
@@ -104,8 +105,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="name" class="col-md-7 control-label">Name</label>
-            <div class="col-md-5">
+            <label for="name" class="col-md-4 control-label">Name</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="name" name="name" placeholder="John" required>
             </div>
         </div>
@@ -113,8 +114,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="surname" class="col-md-7 control-label">Surname</label>
-            <div class="col-md-5">
+            <label for="surname" class="col-md-4 control-label">Surname</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="surname" name="surname" placeholder="Smith" required>
             </div>
         </div>
@@ -122,8 +123,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="dob" class="col-md-7 control-label">Date of Birth</label>
-            <div class="col-md-5">
+            <label for="dob" class="col-md-4 control-label">Date of Birth</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="dob" name="dob" placeholder="DD/MM/YYYY" required>
             </div>
         </div>
@@ -131,8 +132,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="mobile" class="col-md-7 control-label">Mobile Phone</label>
-            <div class="col-md-5">
+            <label for="mobile" class="col-md-4 control-label">Mobile Phone</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+32 333 645 7845" required>
             </div>
         </div>
@@ -140,8 +141,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="email" class="col-md-7 control-label">Email</label>
-            <div class="col-md-5">
+            <label for="email" class="col-md-4 control-label">Email</label>
+            <div class="col-md-8">
               <input type="email" class="form-control" id="email" name="email" placeholder="name@domain.com" required>
             </div>
         </div>
@@ -149,8 +150,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="address" class="col-md-7 control-label">Street Address</label>
-            <div class="col-md-5">
+            <label for="address" class="col-md-4 control-label">Street Address</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="address" name="address" placeholder="123 Main St." required>
             </div>
         </div>
@@ -158,8 +159,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="city" class="col-md-7 control-label">City</label>
-            <div class="col-md-5">
+            <label for="city" class="col-md-4 control-label">City</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="city" name="city" placeholder="Antwerpen" required>
             </div>
         </div>
@@ -167,8 +168,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="province" class="col-md-7 control-label">Province/State</label>
-            <div class="col-md-5">
+            <label for="province" class="col-md-4 control-label">Province/State</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="province" name="province" placeholder="" required>
             </div>
         </div>
@@ -176,8 +177,8 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="postalcode" class="col-md-7 control-label">Postal Code</label>
-            <div class="col-md-5">
+            <label for="postalcode" class="col-md-4 control-label">Postal Code</label>
+            <div class="col-md-8">
               <input type="text" class="form-control" id="postalcode" name="postalcode" placeholder="20095" required>
             </div>
         </div>
@@ -185,15 +186,15 @@
       
       <div class="row">  
         <div class="form-group">
-            <label for="country" class="col-md-7 control-label">Country</label>
-            <div class="col-md-5">
+            <label for="country" class="col-md-4 control-label">Country</label>
+            <div class="col-md-8">
               {% include 'countries.html' %}
             </div>
         </div>
       </div>
     </fieldset>
     
-    <fieldset class="requests">
+    <fieldset class="requests container">
       <legend>I’ve read the <a href="#" class="underline" id="privacy">Privacy info</a> and I authorize the use of my personal data for the following purposes:</legend>
       <div id="policy">
         {% include 'policy.html' %}
@@ -201,10 +202,10 @@
       
       <div class="row">  
         <div class="form-group">
-            <div class="col-md-5">
+            <div class="col-md-1">
               <input type="checkbox" class="stylized" name="emails" value="true" id="emails">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-11">
               Marketing, to receive information, catalogues, invitations, gifts and other services by different channels, like mailings, email, sms,telephone contacts, as well as the participation to events, activities, loyalty initiatives, marketing researches.
             </div>
         </div>
@@ -212,10 +213,10 @@
       
       <div class="row">  
         <div class="form-group">
-            <div class="col-md-5">
+            <div class="col-md-1">
               <input type="checkbox" class="stylized" name="sharingagroup" value="true" id="sharingagroup">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-11">
               Sharing for marketing use with other companies of the Armani Group.
             </div>
         </div>
@@ -223,7 +224,7 @@
       
     </fieldset>
     
-    <fieldset class="submit">
+    <fieldset class="submit container">
       <input type="hidden" name="country" value="{{ location['countryCode'] }}" id="country">
       <input type="hidden" name="likes_us" value="{{ facebook['page']['liked'] }}" id="likes_us">
       
@@ -233,6 +234,7 @@
         </div>
       </div>      
     </fieldset>
+    </div>
   </form>
   
   <article class="thanks slider" id="thanks">
