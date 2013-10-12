@@ -96,16 +96,29 @@ $(function(){
  			this.render();
  		},
  		cacheElements: function () {
+ 		  this.$principal = $("div.principal");
  			this.$formHolder = $("div.holder");
  			this.selectedTemplate = Handlebars.compile($('#item-template').html());
  			
  		  this.$djForm = $('#djs');
  		  this.$signupForm = $('#signup');
  		  this.$thanks = $('#thanks');
+ 		  this.$nextArrow = $("button.arrow");
+ 		  this.$changeSelection = $("a.close");
  		  this.$votedFor = $("#voted-for");
+ 		  this.$djs = $("figure", this.$djForm);
 
  		},
  		bindEvents: function () {
+ 		  this.$changeSelection.on("click",this.deactivateSelection);
+ 		  this.$djs.each(function(i,v){
+ 		    var o = $(this);
+ 		    o.on("click",App.activateSelection);
+ 		    o.on("mouseenter",App.hoverSelection);
+ 		    o.on("mouseleave",App.hoverOutSelection); 		    
+ 		    o.children("input").on("click",function(e){e.stopImmediatePropagation();});
+ 		  });
+ 		  
  		  this.$djForm.on("submit",function(e){return false;}).validate({
         errorElement:"em",
         submitHandler: function(form) {
@@ -120,6 +133,15 @@ $(function(){
          }
         });
  		  
+ 		},
+ 		removeEvents: function(){
+ 		  this.$djs.each(function(i,v){
+ 		    var o = $(this);
+ 		    o.off("click",App.activateSelection);
+ 		    o.off("mouseenter",App.hoverSelection);
+ 		    o.off("mouseleave",App.hoverOutSelection); 		    
+ 		    o.children("input").off("click",function(e){e.stopImmediatePropagation();});
+ 		  });
  		},
  		slideForm: function(){
  		  var lp = App.currentLeftPosition-810;
@@ -145,8 +167,7 @@ $(function(){
       });
  		},
  		showVotedFor: function(data){
- 		  console.log(data);
- 		  App.$votedFor.html(App.selectedTemplate(data));
+ 		  App.$votedFor.html(App.selectedTemplate(data)).show();
  		},
  		togglePanel: function(e){
  		  e.stopImmediatePropagation();
@@ -161,28 +182,47 @@ $(function(){
  		  el.collapse('show');
  		  //return false;
  		},
- 		activateStyle: function (e) {
- 		  var element = e;
- 		      element.css({opacity:0.5});
- 		      element.find('input').iCheck('toggle');
- 		      App.activeStyle = element;
- 		      //this.$panelOne.collapse('hide');
- 		      //this.$panelTwo.collapse('show');
- 		      this.$panelTwo.prev().trigger('click');
- 		      App.updateBuilder({"action":"refresh","obj":$(this.$quantityInputs[0])});
+ 		hoverSelection: function(e){
+ 		  var el = $(e.currentTarget);
+ 		  TweenLite.to(el.find(".vote"), 0.3, {css:{opacity:1}});
+ 		  App.$djs.each(function(i,v){
+ 		    if(v != e.currentTarget) TweenLite.to($(v).children("figcaption"), 0.5, {css:{opacity:0}});
+ 		  });
  		},
- 		deactivateStyle: function (e) {
- 		  var element = $(e.target);
- 		  element.css({opacity:1});
- 		  //element.find('input').iCheck('toggle');
- 		  // should remove object from right here too
- 	  },
- 		toggleStyle: function (e) {
+ 		hoverOutSelection: function(e){
+ 		  var el = $(e.currentTarget);
+ 		  TweenLite.to(el.find(".vote"), 0.3, {css:{opacity:0}});
+ 		  App.$djs.each(function(i,v){
+ 		    TweenLite.to($(v).children("figcaption"), 0.5, {css:{opacity:1}});
+ 		  });
+ 		},
+ 		activateSelection: function (e) {
+ 		  var el = $(e.currentTarget), c = el.find("span");
+ 		      el.children('input[type="radio"]').trigger("click");
+ 		      el.addClass("selected");
+ 		      TweenLite.to(App.$principal, 0.6, {backgroundColor:"rgba(0,0,0,0.6)"});  
+ 		      App.$djs.each(function(i,v){
+     		    if(v != e.currentTarget) TweenLite.to($(v), 0.5, {css:{opacity:0.2}});
+     		  });
+     		  App.showVotedFor({"title":c.text()});
+     		  App.removeEvents();
+     		  TweenLite.to(el.find(".vote"), 0.3, {css:{opacity:0}});
+     		  TweenLite.to(el.children("figcaption"), 0.5, {css:{opacity:0}});
+     		  App.$changeSelection.show();
+     		  App.$nextArrow.show();
+ 		},
+ 		deactivateSelection: function (e) {
  		  e.stopImmediatePropagation();
- 			if(App.activeStyle.length > 0) App.activeStyle.trigger('deactivate');
- 			var element = $(this);
- 			App.activateStyle(element);
- 		}
+ 		  App.bindEvents();
+ 		  $("figure.selected").removeClass("selected");
+ 		  App.$votedFor.hide();
+ 		  TweenLite.to(App.$djs, 0.5, {css:{opacity:1}});
+ 		  TweenLite.to(App.$djs.children("figcaption"), 0.5, {css:{opacity:1}});
+ 		  TweenLite.to(App.$principal, 0.6, {backgroundColor:"rgba(0,0,0,0)"});
+ 		  App.$changeSelection.hide();
+ 		  App.$nextArrow.hide();
+ 		  return false;
+ 	  }
  	};
 
  	App.init();

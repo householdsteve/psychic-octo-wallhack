@@ -2,7 +2,7 @@
    Author's custom styles
    ========================================================================== */
 
-//@import "fonts.less";
+@import "fontello.less";
 @font_stack: 'Oswald', sans-serif;
 @base_grey: #eee;
 @med_grey: #ccc;
@@ -24,13 +24,16 @@ html, body {
 	color:white;
 }
 
+body {
+  background: transparent url('../images/bg.jpg') no-repeat top center;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight:lighter;
 	font-family: @font_stack;
 }
 
-section {position:relative;}
+section, form {position:relative;}
 
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
@@ -38,8 +41,23 @@ a:focus, a.active:focus {outline:none;}
 a::-moz-focus-inner {border:0;}
 
 
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.circleer (@radius: 5px) {
+  .rounded-corners(@radius);
+  width:@radius;
+  height:@radius;
+}
+
+
 .principal {
-  background: #DDD url('../images/bg.jpg') no-repeat top center;
+  background-color:rgba(0,0,0,0);
   width:@fbwidth;
   &.step1 {
     section.forms .holder {
@@ -68,26 +86,40 @@ section {
     .holder {
      width: @fbwidth * 3;
      position:relative;
-     left:0px; 
+     left:0px;
     }
-    #djs input {
+    .close {
+      color:white;
+      font-size:80px;
+      position:absolute;
+      left:-20px;
+      top:170px;
+      display:none;
+      z-index:50;
+      span {
+        display:block;
+        text-indent:-99999em; 
+      }
+    }
+    .arrow{
+      background:none;
+      border:none;
+      color:white;
+      font-size:80px;
+      position:absolute;
+      right:0px;
+      top:170px;
+      display:none;
+      z-index:50;
+      span {
+        display:block;
+        text-indent:-99999em; 
+      }
+    }
+    #djs input[type="radio"] {
       display:none;
     }
   }
-}
-
-.rounded-corners (@radius: 5px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  -ms-border-radius: @radius;
-  -o-border-radius: @radius;
-  border-radius: @radius;
-}
-
-.circleer (@radius: 5px) {
-  .rounded-corners(@radius);
-  width:@radius;
-  height:@radius;
 }
 
 .circle {
@@ -108,17 +140,34 @@ section {
     float:left;
 }
 
+#voted-for {
+  position:relative;
+  top:-275px;
+  text-align:center;
+  left:0;
+  height:auto;
+  width:auto;
+  text-transform:uppercase;
+  font-size:22px;
+  line-height:21px;
+}
+
 figure {
   text-align:center;
+  cursor:pointer;
   &.down {
     margin-top:50px;
   }
-  div.vote {
-    display:none;
+  &.selected {
+    &:hover div.vote {
+
+    }
   }
-  &:hover div.vote {
+  div.vote {
     display:block;
-    background:rgba(0,0,0,0.5);
+    opacity:0;
+    font-size:30px;
+    background:rgba(0,0,0,0.65);
     width:176px;
     height:176px;
     position:absolute;

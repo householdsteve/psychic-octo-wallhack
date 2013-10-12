@@ -6,11 +6,14 @@
   </div>
 </div>
 <script id="item-template" type="text/x-handlebars-template">
-  <div id="{{contentId}}" class="template col-md-6{{contentClass}}">
-    <img src="{{imgSrc}}">
-    <div class="counter-overlay">{{counter}}</div>
-    <footer>{{description}}</footer>
+{% raw %}
+<div class="row">
+  <div class="djselected col-md-6 col-md-offset-3">
+    you’ve voted  {{title}}<br>
+    Now get you’re invite  the event
   </div>
+</div>
+{% endraw %}
 </script>
 
 <div id="fb-root"></div>
