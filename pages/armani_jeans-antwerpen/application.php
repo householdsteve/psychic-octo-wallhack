@@ -7,7 +7,7 @@ if(!file_exists(__DIR__ .'/vendor/autoload.php')) {
 }
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ .'/resources/base.php';
-    
+
 // OK MODIFY AFTER HERE
 function process_page_call($URLPARTS){
     $is_page_secure = find_secure_connection();
@@ -71,6 +71,7 @@ function process_page_call($URLPARTS){
           $u->username = "steve";
           $u->password = "20armani13";
           $parse_user = $u->login();
+          //echo "<pre>".print_r($location)."</pre>";
 
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
           $fbdata = signed_request_data($_POST['signed_request'],'dae2f933990c664c01730fe4f5255c62');
