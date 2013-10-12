@@ -20,3 +20,21 @@ function curl_custom_url($url) {
     curl_close($curl);
     return array($html, $content_type);
 }
+
+/**
+ * jquery style extend, merges arrays (without errors if the passed values are not arrays)
+ *
+ * @return array $extended
+ **/
+function extend() {
+	$args = func_get_args();
+	$extended = array();
+	if(is_array($args) && count($args)) {
+		foreach($args as $array) {
+			if(is_array($array)) {
+				$extended = array_merge($extended, $array);
+			}
+		}
+	}
+	return $extended;
+}
