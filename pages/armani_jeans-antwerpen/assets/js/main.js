@@ -37,6 +37,40 @@ $.support.cors = true;
 
  			return uuid;
  		},
+ 		getAge: function(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    },
+    getAgeRange: function(age){
+      var group;
+      switch(true){
+        case (age > 18 && age < 25):
+          group = 1824;
+        break;
+        case (age > 24 && age < 35):
+          group = 2534;
+        break;
+        case (age > 34 && age < 45):
+          group = 3544;
+        break;
+        case (age > 44 && age < 55):
+          group = 4554;
+        break;
+        case (age > 54 && age < 65):
+          group = 5565;
+        break;
+        case (age > 64 && age < 110):
+          group = 6699;
+        break;
+      }
+      return group;
+    },
  		pluralize: function (count, word) {
  			return count === 1 ? word : word + 's';
  		},
@@ -119,26 +153,17 @@ $.support.cors = true;
            
            data.deejay = $('input[name="deejay"]',this.$djForm).val();
            
-           var age = App.getAge(data.year+"/"+data.month+"/"+data.date);
+           var age = Utils.getAge(data.year+"/"+data.month+"/"+data.date);
            
-           console.log(age)
-           //data.age_range = 
-           
-           //$.parse.post('signups',data, App.saveData);
+           data.dob = data.year+"/"+data.month+"/"+data.date;
+           data.age_range = Utils.getAgeRange(age);
+           data.sex = parseFloat(data.gender);
+           $.parse.post('signups',data, App.saveData);
          }
         });
  		},
- 		getAge: function(dateString) {
-        var today = new Date();
-        var birthDate = new Date(dateString);
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        return age;
-    },
  		saveData: function(json){
+ 		  console.log(json)
  		  if(json.objectId != ""){
         App.slideForm();
        }
