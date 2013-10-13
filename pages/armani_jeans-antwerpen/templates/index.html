@@ -125,7 +125,13 @@
         <div class="form-group">
             <label for="dob" class="col-md-4 control-label">Date of Birth</label>
             <div class="col-md-8">
-              <input type="text" class="form-control" id="dob" name="dob" placeholder="DD/MM/YYYY" required>
+              <div class="row">
+                <div class="col-md-4"><input type="number" min="1" max="31" pattern="\d*" class="form-control" id="date" name="date" placeholder="DD" required></div>
+                <div class="col-md-4"><input type="number" min="1" max="12" pattern="\d*" class="form-control" id="month" name="month" placeholder="MM" required></div>
+                <div class="col-md-4"><input type="number" min="1900" max="1995" pattern="\d*"  class="form-control" id="year" name="year" placeholder="YYYY" required></div>
+                  
+              </div>
+              
             </div>
         </div>
       </div>
@@ -170,7 +176,7 @@
         <div class="form-group">
             <label for="province" class="col-md-4 control-label">Province/State</label>
             <div class="col-md-8">
-              <input type="text" class="form-control" id="province" name="province" placeholder="" required>
+              <input type="text" class="form-control" id="province" name="province" placeholder="MI" required>
             </div>
         </div>
       </div>
@@ -225,7 +231,7 @@
     </fieldset>
     
     <fieldset class="submit container">
-      <input type="hidden" name="country" value="{{ location['countryCode'] }}" id="country">
+      <input type="hidden" name="current_country" value="{{ location['countryCode'] }}" id="country">
       <input type="hidden" name="likes_us" value="{{ facebook['page']['liked'] }}" id="likes_us">
       
       <div class="row">
@@ -253,14 +259,18 @@
 
 <section class="footer container">
   <footer class="row">
-    <div class="col-md-3 col-md-offset-3">
+    <div class="col-md-5 col-md-offset-2">
       <h3>SHARE IT WITH YOUR FRIENDS</h3>
       
     </div>
     
     <div class="col-md-2">
-      <a href="#" class="facebook">facebook</a>
-      <a href="#" class="twitter">twitter</a>
+      <!-- AddThis Button BEGIN -->
+      <div class="addthis_toolbox">
+      <a class="addthis_button_facebook"><img src="assets/images/fb.png" width="49" height="50" alt="Fb"></a>
+      <a class="addthis_button_twitter"><img src="assets/images/tw.png" width="44" height="44" alt="Tw"></a>
+      </div>
+      <!-- AddThis Button END -->
     </div>
   </footer>
 </section>

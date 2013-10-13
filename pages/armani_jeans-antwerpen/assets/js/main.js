@@ -49,6 +49,15 @@ $.support.cors = true;
  			}
  		}
  	};
+ 	
+ 	$.validator.addMethod(
+      "euroDate",
+      function(value, element) {
+          // put your own logic here, this is just a (crappy) example
+          return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
+      },
+      "Please enter a date in the format dd/mm/yyyy."
+  );
 
  	var App = {
  		init: function () {
@@ -96,34 +105,43 @@ $.support.cors = true;
        
        this.$signupForm.on("submit",function(e){return false;}).validate({
          errorElement:"em",
+         rules : {
+                    gender: {
+                     required:true 
+                    }
+                 },
          submitHandler: function(form) {
-           App.slideForm();
+           
+           var data = {}
+           $.each($(form).serializeArray(),function(i,v){
+             data[v.name] = v.value;
+           });
+           
+           data.deejay = $('input[name="deejay"]',this.$djForm).val();
+           
+           var age = App.getAge(data.year+"/"+data.month+"/"+data.date);
+           
+           console.log(age)
+           //data.age_range = 
+           
+           //$.parse.post('signups',data, App.saveData);
          }
         });
-        
-        
-        $("#signupereere").on("submit",function(e){return false;}).validate({
-          errorElement:"em",
-          rules: {
-              accept:"required"
-            },
-          submitHandler: function(form) {
-            var data = {}
-            $.each($(form).serializeArray(),function(i,v){
-              data[v.name] = v.value;
-            });
-            $.parse.post('signups',data, function(json){
-              //console.log(json);
-              var dek = 300;
-              if(json.objectId != ""){
-                $(form).css({opacity:1}).animate({opacity:0},dek,function(){$(form).hide()});
-                $("#success").delay(dek).css({opacity:0}).show().animate({opacity:1},dek);
-              }
-            });
-            return false;
-          }
-         });
- 		  
+ 		},
+ 		getAge: function(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    },
+ 		saveData: function(json){
+ 		  if(json.objectId != ""){
+        App.slideForm();
+       }
  		},
  		removeEvents: function(){
  		  this.$djs.each(function(i,v){
@@ -145,8 +163,7 @@ $.support.cors = true;
  		    App.currentLeftPosition = lp;
  		  });
  		},
- 		render: function () {
-
+ 		render: function () {        
         $('[placeholder]').parents('form').submit(function() {
           $(this).find('[placeholder]').each(function() {
             var input = $(this);

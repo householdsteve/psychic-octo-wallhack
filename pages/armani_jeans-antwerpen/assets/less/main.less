@@ -136,15 +136,20 @@ section {
           margin:0 0 0 10px;
         }
       }
-      input[type="text"],input[type="email"], select {
+      input[type="text"],input[type="email"] ,input[type="number"], select {
         background:none;
         border:none;
         border-bottom:2px solid white;
         .rounded-corners(0px);
         color:white;
       }
-      select option {
-        color:black;
+      select:focus {
+        background:black;
+        border:1px solid black;
+      }
+      select:focus * {
+        color:white;
+        border:none;
       }
       .error {
         color:@ajred;
@@ -225,6 +230,18 @@ figure {
   font-size:10px;
 }
 
+
+.addthis_button_facebook {
+  position:relative;
+  top:8px;
+}
+
+.addthis_button_twitter {
+  position:relative;
+  top:-30px;
+  left:42px;
+  margin:10px;
+}
 
 /* ------- F --------- */
 
