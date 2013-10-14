@@ -28,6 +28,13 @@ body {
   background: #000 url('../images/bg.jpg') no-repeat top center;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight:lighter;
 	font-family: @font_stack;
