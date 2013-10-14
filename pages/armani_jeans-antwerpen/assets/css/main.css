@@ -328,6 +328,12 @@ figure div.vote {
 .actions .right {
   line-height: 65px;
 }
+.btn-custom {
+  border-radius: 0;
+  background: #000;
+  border: 1px solid #fff;
+  margin: 45px auto;
+}
 /* ------- F --------- */
 /* --------- FORMATTING FOR FORMS ----------------- */
 /*
