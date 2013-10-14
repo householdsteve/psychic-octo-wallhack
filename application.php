@@ -39,7 +39,7 @@ function process_page_call($URLPARTS){
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
-          "baseurl"=> "//localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
+          "baseurl"=> "//localhost/2013/static", // THE BASE URL OF THE SITE
           "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
