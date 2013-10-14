@@ -39,7 +39,8 @@ function process_page_call($URLPARTS){
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
-          "baseurl"=> "//radiant-mesa-3211.herokuapp.com/pages/armani_jeans-antwerpen",
+          "baseurl"=> "//localhost/2013/static/pages/armani_jeans-antwerpen", // THE BASE URL OF THE SITE
+          "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
           "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
