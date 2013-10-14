@@ -157,8 +157,8 @@ $.support.cors = true;
            
            data.dob = data.year+"/"+data.month+"/"+data.date;
            data.age_range = Utils.getAgeRange(age);
-           data.sex = parseFloat(data.gender);
-           data.sex = (date.sex == 5) ? 1 : date.sex;
+           var sex = parseFloat(data.gender);
+           data.sex = (sex == 5) ? 1 : sex;
            $.parse.post('signups',data, App.saveData);
          }
         });
