@@ -81,6 +81,13 @@ h6 {
   font-weight: lighter;
   font-family: 'Oswald', sans-serif;
 }
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+a:hover {
+  color: #fff;
+}
 section,
 form {
   position: relative;
@@ -145,7 +152,7 @@ section.forms .arrow {
   font-size: 80px;
   position: absolute;
   right: 0px;
-  top: 170px;
+  top: 150px;
   display: none;
   z-index: 50;
 }
@@ -199,6 +206,7 @@ section.forms #signup legend {
   font-size: 12px;
   border: none;
   margin: 20px 0 30px 0;
+  padding-bottom: 20px;
 }
 .circle .small {
   -webkit-border-radius: 70px;
@@ -228,7 +236,7 @@ section.forms #signup legend {
   text-align: center;
   line-height: 100px;
   font-size: 30px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .slider {
   width: 810px;
@@ -236,7 +244,7 @@ section.forms #signup legend {
 }
 #voted-for {
   position: relative;
-  top: -275px;
+  top: -344px;
   text-align: center;
   left: 0;
   height: auto;
@@ -250,7 +258,7 @@ figure {
   cursor: pointer;
 }
 figure.down {
-  margin-top: 50px;
+  margin-top: 150px;
 }
 figure div.vote {
   display: block;
@@ -327,6 +335,26 @@ figure div.vote {
 }
 .actions .right {
   line-height: 65px;
+}
+.btn-custom {
+  border-radius: 0;
+  background: #000;
+  border: 1px solid #fff;
+  margin: 45px auto;
+}
+.btn-custom:hover .btn-custom:active {
+  color: #cccccc !important;
+  background: #a1a1a1 !important;
+}
+fieldset.requests.container {
+  margin-top: 45px;
+}
+.final {
+  padding: 74px;
+  text-align: center;
+  background: url('../images/final-bg.png') no-repeat scroll top left;
+  width: 408px;
+  height: 407px;
 }
 /* ------- F --------- */
 /* --------- FORMATTING FOR FORMS ----------------- */
