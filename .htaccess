@@ -1,4 +1,4 @@
-SetEnv APPENV local
+SetEnv APPENV dev
 SetEnv APPCACHE false
 
 RewriteEngine on

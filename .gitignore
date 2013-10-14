@@ -1,5 +1,5 @@
 cache/*
-
+.htaccess
 # stuff for python deploy
 post-receive
 Makefile

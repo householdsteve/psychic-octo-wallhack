@@ -155,7 +155,7 @@ $.support.cors = true;
            
            var age = Utils.getAge(data.year+"/"+data.month+"/"+data.date);
            
-           data.dob = data.year+"/"+data.month+"/"+data.date;
+           data.dob = data.year+""+data.month+""+data.date;
            data.age_range = Utils.getAgeRange(age);
            var sex = parseFloat(data.gender);
            data.sex = (sex == 5) ? 1 : sex;
@@ -164,7 +164,6 @@ $.support.cors = true;
         });
  		},
  		saveData: function(json){
- 		  console.log(json)
  		  if(json.objectId != ""){
         App.slideForm();
        }
