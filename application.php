@@ -35,7 +35,7 @@ function process_page_call($URLPARTS){
 // THIS GETS DATA FROM THE URL AND PROCESSES IT FOR US
     //$URLPARTS - THIS COMES FROM THE INDEX PAGE.
     $URLARGS = array_slice($URLPARTS, 1);
-    $baseurl = "//armanissl.com/antwerpen",
+    $baseurl = "//armanissl.com/antwerpen";
 
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = array(
