@@ -82,8 +82,8 @@ function process_page_call($URLPARTS){
           //echo "<pre>".print_r($location)."</pre>";
 
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
-          $fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
-          
+          //$fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
+          $fbdata = array();          
           return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
       break;
   
