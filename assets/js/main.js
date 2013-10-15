@@ -5,7 +5,7 @@ $.parse.init({
 });
 
 FB.init({
-    appId: '216035795213266',
+    appId: '568727519847132',
     status: true, 
     cookie: true, 
     xfbml: true

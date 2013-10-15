@@ -52,6 +52,12 @@ function process_page_call($URLPARTS){
      );
 
 // THIS PROCESSES THE FIRST PART OF THE URL TO DELEGATE ACTIONS
+    
+    $ismobile = checkMobile();
+    if(!$ismobile){
+      //header("Location: http://facebook.com");
+    }
+
     switch($URLPARTS[0]):
       case "index":
       default: // INCASE IT DOESNT FIND ANYTHING ELSE AT LEAST DO THIS:
