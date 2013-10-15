@@ -56,7 +56,7 @@ function process_page_call($URLPARTS){
 // THIS PROCESSES THE FIRST PART OF THE URL TO DELEGATE ACTIONS
     $detect = new Mobile_Detect;
     
-    if ($detect->isMobile()) {
+    if (!$detect->isMobile()) {
       header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
     }
 
