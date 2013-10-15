@@ -160,7 +160,7 @@ $.support.cors = true;
            
            var age = Utils.getAge(data.year+"/"+data.month+"/"+data.date);
            
-           data.dob = data.year+""+Utils.padNumber(data.month)+""+Utils.padNumber(data.date);
+           data.dob = data.year+""+Utils.padNumber(data.month,2)+""+Utils.padNumber(data.date,2);
            data.age_range = Utils.getAgeRange(age);
            var sex = parseFloat(data.gender);
            data.sex = (sex == 5) ? 1 : sex;
