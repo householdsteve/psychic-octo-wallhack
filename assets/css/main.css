@@ -120,6 +120,7 @@ body .container {
 .principal {
   background-color: rgba(0, 0, 0, 0);
   width: 810px;
+  min-width: 810px;
   padding: 0;
 }
 .principal.step1 section.forms .holder {
