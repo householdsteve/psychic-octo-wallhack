@@ -74,6 +74,11 @@ $.support.cors = true;
  		pluralize: function (count, word) {
  			return count === 1 ? word : word + 's';
  		},
+ 		padNumber: function (n, width, z) {
+      z = z || '0';
+      n = n + '';
+      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    },
  		store: function (namespace, data) {
  			if (arguments.length > 1) {
  				return localStorage.setItem(namespace, JSON.stringify(data));
@@ -155,7 +160,7 @@ $.support.cors = true;
            
            var age = Utils.getAge(data.year+"/"+data.month+"/"+data.date);
            
-           data.dob = data.year+""+data.month+""+data.date;
+           data.dob = data.year+""+Utils.padNumber(data.month)+""+Utils.padNumber(data.date);
            data.age_range = Utils.getAgeRange(age);
            var sex = parseFloat(data.gender);
            data.sex = (sex == 5) ? 1 : sex;
