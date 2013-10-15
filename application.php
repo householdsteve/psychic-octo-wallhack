@@ -7,6 +7,7 @@ if(!file_exists(__DIR__ .'/vendor/autoload.php')) {
 }
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ .'/resources/base.php';
+//require_once 'Mobile_Detect.php';
 
 // OK MODIFY AFTER HERE
 function process_page_call($URLPARTS){
@@ -53,9 +54,9 @@ function process_page_call($URLPARTS){
      );
 
 // THIS PROCESSES THE FIRST PART OF THE URL TO DELEGATE ACTIONS
+    $detect = new Mobile_Detect;
     
-    $ismobile = checkMobile();
-    if(!$ismobile){
+    if ($detect->isMobile()) {
       header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
     }
 
@@ -81,7 +82,7 @@ function process_page_call($URLPARTS){
           //echo "<pre>".print_r($location)."</pre>";
 
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
-          $fbdata = signed_request_data($_POST['signed_request'],'dae2f933990c664c01730fe4f5255c62');
+          $fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
           
           return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
       break;

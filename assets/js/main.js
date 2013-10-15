@@ -74,10 +74,11 @@ $.support.cors = true;
  		pluralize: function (count, word) {
  			return count === 1 ? word : word + 's';
  		},
- 		padNumber: function (n, width, z) {
-      z = z || '0';
-      n = n + '';
-      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+ 		padNumber: function (number, digits) {
+      // z = z || '0';
+      //       n = n + '';
+      //       return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+      return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
     },
  		store: function (namespace, data) {
  			if (arguments.length > 1) {
@@ -97,6 +98,14 @@ $.support.cors = true;
       },
       "Please enter a date in the format dd/mm/yyyy."
   );
+  
+  $.validator.addMethod('mustSelect', function(value,element){
+    if($(element).is(':checked')){
+      return true;
+    }else{
+      return false;
+    }
+  }, 'You must check this box');
 
  	var App = {
  		init: function () {
@@ -147,7 +156,11 @@ $.support.cors = true;
          rules : {
                     gender: {
                      required:true 
+                    },
+                    emails: {
+                      mustSelect:true
                     }
+                    
                  },
          submitHandler: function(form) {
            
@@ -164,6 +177,7 @@ $.support.cors = true;
            data.age_range = Utils.getAgeRange(age);
            var sex = parseFloat(data.gender);
            data.sex = (sex == 5) ? 1 : sex;
+           console.log(data)
            $.parse.post('signups',data, App.saveData);
          }
         });
