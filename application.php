@@ -39,7 +39,8 @@ function process_page_call($URLPARTS){
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
-          "baseurl"=> ($_SERVER["APPENV"] == "local") ? "//armanissl.com/antwerpen" : "//localhost/2013/static", // THE BASE URL OF THE SITE
+          //"baseurl"=> ($_SERVER["APPENV"] == "local") ? "//armanissl.com/antwerpen" : "//localhost/2013/static", // THE BASE URL OF THE SITE
+          "baseurl"=> "//armanissl.com/antwerpen", // THE BASE URL OF THE SITE
           "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
@@ -55,7 +56,7 @@ function process_page_call($URLPARTS){
     
     $ismobile = checkMobile();
     if(!$ismobile){
-      //header("Location: http://facebook.com");
+      //header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
     }
 
     switch($URLPARTS[0]):
