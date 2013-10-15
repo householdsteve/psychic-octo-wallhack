@@ -35,13 +35,13 @@ function process_page_call($URLPARTS){
 // THIS GETS DATA FROM THE URL AND PROCESSES IT FOR US
     //$URLPARTS - THIS COMES FROM THE INDEX PAGE.
     $URLARGS = array_slice($URLPARTS, 1);
-    
+    $baseurl = "//armanissl.com/antwerpen",
 
 // THESE ARE THE DEFAULT PAGE VARIABLE
     $pagevars = array(
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
           //"baseurl"=> ($_SERVER["APPENV"] == "local") ? "//armanissl.com/antwerpen" : "//localhost/2013/static", // THE BASE URL OF THE SITE
-          "baseurl"=> "//armanissl.com/antwerpen", // THE BASE URL OF THE SITE
+          "baseurl"=> $baseurl, // THE BASE URL OF THE SITE
           "secure" => $is_page_secure,
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
@@ -49,7 +49,7 @@ function process_page_call($URLPARTS){
           "title"=>"INVITES YOU TO THE NEW STORE OPENING", // THE SECOND PART OF PAGE TITLE. THIS SHOULD BE EXTENDED BELOW BASED ON CONTENT
           "description" => "Armani Jeans opens in Antwerpen", // THIS IS FOR META TAGS
           "keywords" => "Armani, Jeans, Belgium, Antwerpen, Dj", // THIS TOO, THESE BOTH SHOULD BE EXTENDED BASED ON CONTEXT
-          "og" => array("image"=> "",
+          "og" => array("image"=> $baseurl."/assets/images/OG.jpg",
                         "title"=> "") // THESE ARE FOR SOCIAL CHANNELS LIKE FACEBOOK WHERE AN IMAGE IS SHARED.
      );
 
