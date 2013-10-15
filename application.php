@@ -56,7 +56,7 @@ function process_page_call($URLPARTS){
     
     $ismobile = checkMobile();
     if(!$ismobile){
-      //header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
+      header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
     }
 
     switch($URLPARTS[0]):
