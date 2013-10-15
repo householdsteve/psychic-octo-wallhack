@@ -115,7 +115,7 @@ a::-moz-focus-inner {
   border: 0;
 }
 body .container {
-  max-width: auto !important;
+  max-width: auto;
 }
 .principal {
   background-color: rgba(0, 0, 0, 0);
