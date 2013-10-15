@@ -114,6 +114,9 @@ a.active:focus {
 a::-moz-focus-inner {
   border: 0;
 }
+body .container {
+  max-width: auto !important;
+}
 .principal {
   background-color: rgba(0, 0, 0, 0);
   width: 810px;
@@ -127,6 +130,9 @@ a::-moz-focus-inner {
 }
 .principal.step3 section.forms .holder {
   left: -1620px;
+}
+html.touch .principal {
+  width: 100%;
 }
 section.main header {
   height: 105px;
