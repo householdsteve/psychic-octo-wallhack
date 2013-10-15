@@ -54,20 +54,37 @@ function process_page_call($URLPARTS){
      );
 
 // THIS PROCESSES THE FIRST PART OF THE URL TO DELEGATE ACTIONS
-    $detect = new Mobile_Detect;
+    include __DIR__ ."/resources/parse/parse.php";
+    include __DIR__ ."/resources/fb.php";
+    include __DIR__ ."/resources/ip2locationlite.class.php";
     
-    if (!$detect->isMobile()) {
-      header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
-    }
-
     switch($URLPARTS[0]):
+      case "check":
+        $detect = new Mobile_Detect;
+        if (!$detect->isMobile()) {
+          header("Location: https://www.facebook.com/ARMANI/app_568727519847132");
+        }else{
+          //Load the class
+          $ipLite = new ip2location_lite;
+          $ipLite->setKey('8ef8f30a803dad6fd963f2352a7cd64f78f0569efff2a283824929031089e62b');
+          $location = $ipLite->getCountry($_SERVER['REMOTE_ADDR']);
+          
+          // get user session key for parse
+          $parse = new parseRestClient();
+          $u = new parseUser();
+          $u->username = "steve";
+          $u->password = "20armani13";
+          $parse_user = $u->login();
+          //echo "<pre>".print_r($location)."</pre>";
+
+          // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
+          //$fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
+          $fbdata = array();          
+          return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
+        }
+      break;
       case "index":
       default: // INCASE IT DOESNT FIND ANYTHING ELSE AT LEAST DO THIS:
-      
-          include __DIR__ ."/resources/parse/parse.php";
-          include __DIR__ ."/resources/fb.php";
-          include __DIR__ ."/resources/ip2locationlite.class.php";
-
           //Load the class
           $ipLite = new ip2location_lite;
           $ipLite->setKey('8ef8f30a803dad6fd963f2352a7cd64f78f0569efff2a283824929031089e62b');
