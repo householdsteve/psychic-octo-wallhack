@@ -207,7 +207,8 @@ $.support.cors = true;
  		    App.currentLeftPosition = lp;
  		  });
  		},
- 		render: function () {        
+ 		render: function () {
+ 		  if($('html').hasClass("lt-ie10")) $("#noie").show();
         $('[placeholder]').parents('form').submit(function() {
           $(this).find('[placeholder]').each(function() {
             var input = $(this);
