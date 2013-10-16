@@ -208,7 +208,10 @@ $.support.cors = true;
  		  });
  		},
  		render: function () {
- 		  if($('html').hasClass("lt-ie10")) $("#noie").show();
+ 		  if($('html').hasClass("lt-ie10")){
+ 		    $("#noie").show();
+ 		    $('body').addClass('noie');
+ 		  } 
         $('[placeholder]').parents('form').submit(function() {
           $(this).find('[placeholder]').each(function() {
             var input = $(this);
