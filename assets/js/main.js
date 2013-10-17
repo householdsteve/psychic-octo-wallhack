@@ -181,7 +181,7 @@ $.support.cors = true;
              data[v.name] = v.value;
            });
            
-           data.deejay = $('input[name="deejay"]',this.$djForm).val();
+           data.deejay = $('input[name="deejay"]:checked',this.$djForm).val();
            
            var age = Utils.getAge(data.year+"/"+data.month+"/"+data.date);
            

@@ -43,6 +43,7 @@ function process_page_call($URLPARTS){
           "appenv"=>$_SERVER["APPENV"], // THIS ALLOWS US TO WRITE VARIABLES BASE ON ENVIRONMENT
           "baseurl"=> $baseurl, // THE BASE URL OF THE SITE
           "secure" => $is_page_secure,
+          "eventclosed" => "no",
           "nav" => "", // send an object here
           "args" => $URLARGS, // SEND ALL OF THE ARGUMENTS TO USE USED IN THE PAGE
           "titlebase" => "Armani - ", // THE FIRST PART OF THE PAGE TITLE
@@ -76,12 +77,32 @@ function process_page_call($URLPARTS){
           $u->password = "20armani13";
           $parse_user = $u->login();
           //echo "<pre>".print_r($location)."</pre>";
-
+          
+          $parseQ = new parseQuery($class = 'signups');
+          $result = $parseQ->find();
+          
+          if(count($result->results) > 100){
+            $pagevars['eventclosed'] = "yes";
+          }    
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
           $fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
           //$fbdata = array();          
           return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
         }
+      break;
+      case "count":
+          $parse = new parseQuery($class = 'signups');
+          $result = $parse->find();
+          echo count($result->results);
+          // echo "RESULT: ";
+          //           print_r($result);
+      break;
+      case "view":
+          $parse = new parseQuery($class = 'signups');
+          $result = $parse->find();
+          echo "<pre>";
+          print_r($result);
+          echo "</pre>";
       break;
       case "index":
       default: // INCASE IT DOESNT FIND ANYTHING ELSE AT LEAST DO THIS:
@@ -97,10 +118,17 @@ function process_page_call($URLPARTS){
           $u->password = "20armani13";
           $parse_user = $u->login();
           //echo "<pre>".print_r($location)."</pre>";
-
+          
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
-          //$fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
-          $fbdata = array();          
+          $fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
+          //$fbdata = array();
+          $parseQ = new parseQuery($class = 'signups');
+          $result = $parseQ->find();
+          
+          if(count($result->results) > 100){
+            $pagevars['eventclosed'] = "yes";
+          }
+            
           return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
       break;
   

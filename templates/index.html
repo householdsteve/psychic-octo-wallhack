@@ -80,7 +80,6 @@
     <div id="voted-for"><!-- PLACEHOLDER HERE --></div>
     
   </form>
-  
   <form class="signup slider container" id="signup" action="#signup" method="post" accept-charset="utf-8">
     <div class="col-md-8 col-sm-8  col-md-offset-2 col-sm-offset-2 ">
     <fieldset class="fields container">
@@ -130,7 +129,6 @@
                 <div class="col-md-4 col-sm-4 "><input type="text" max="31" pattern="\d*" class="form-control" id="date" name="date" placeholder="DD" required></div>
                 <div class="col-md-4 col-sm-4 "><input type="text" max="12" pattern="\d*" class="form-control" id="month" name="month" placeholder="MM" required></div>
                 <div class="col-md-4 col-sm-4 "><input type="text" min="1900" max="1995" pattern="\d*"  class="form-control" id="year" name="year" placeholder="YYYY" required></div>
-                  
               </div>
               
             </div>
@@ -247,12 +245,17 @@
   
   <article class="thanks slider" id="thanks">
     <div class="col-md-12 col-sm-12  col-md-offset-3 col-sm-offset-3  circle final">
-      <h3>THANKS FOR SIGNING UP! WE ARE WORKING YOU INTO THE GUESTLIST.</h3>
-      <h4>
-        <a href="{{ pagevars.baseurl }}/assets/pdf/AJ_Anversa_UD.pdf">PLEASE CLICK HERE TO DOWNLOAD YOUR INVITE.</a>
-      </h4>
-      <small>Only 100 invites are available so invite your friends now!</small>
-      <span class="large">DO IT</span>
+      {% if pagevars.eventclosed == "yes" %}
+        <h3>THANKS FOR SIGNING UP! WE ARE WORKING ON THE GUESTLIST. YOU WILL RECEIVE AN EMAIL IF  YOUR APPLICATION HAS BEEN ACCEPTED.</h3>
+      {% else %}
+        <h3>THANKS FOR SIGNING UP! WE ARE WORKING YOU INTO THE GUESTLIST.</h3>
+        <h4>
+          <a href="{{ pagevars.baseurl }}/assets/pdf/AJ_Anversa_UD.pdf">PLEASE CLICK HERE TO DOWNLOAD YOUR INVITE.</a>
+        </h4>
+        <small>Only 100 invites are available so invite your friends now!</small>
+        <span class="large">DO IT</span>
+      {% endif %}
+
       <!-- AddThis Button BEGIN -->
       <div class="addthis_toolbox">
       <a class="addthis_button_facebook"><img src="assets/images/fb.png" width="60" height="60" alt="Fb"></a>
