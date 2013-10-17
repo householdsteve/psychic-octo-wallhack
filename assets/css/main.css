@@ -134,6 +134,7 @@ body .container {
 }
 html.touch .principal {
   width: 100%;
+  min-width: 100%;
 }
 section.main header {
   height: 105px;
