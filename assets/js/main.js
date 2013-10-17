@@ -159,7 +159,19 @@ $.support.cors = true;
                     },
                     emails: {
                       mustSelect:true
-                    }
+                    },
+                    date: {
+                          required: true,
+                          number: true
+                        },
+                    month: {
+                          required: true,
+                          number: true
+                        },
+                    year: {
+                          required: true,
+                          number: true
+                        }                 
                     
                  },
          submitHandler: function(form) {
