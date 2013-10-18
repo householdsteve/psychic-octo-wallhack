@@ -84,6 +84,7 @@ function process_page_call($URLPARTS){
           if(count($result->results) > 100){
             $pagevars['eventclosed'] = "yes";
           }    
+          $pagevars['eventclosed'] = "yes"; // event is closed manually.          
           // get the facebook page info based on user // ONLY AVAILABLE FROM TAB
           $fbdata = signed_request_data($_POST['signed_request'],'720a58877f1d26dc69dd8c8dc7396d7d');
           //$fbdata = array();          
@@ -93,7 +94,8 @@ function process_page_call($URLPARTS){
       case "count":
           $parse = new parseQuery($class = 'signups');
           $result = $parse->find();
-          echo count($result->results);
+          echo "all full!";
+          //echo count($result->results);
           // echo "RESULT: ";
           //           print_r($result);
       break;
@@ -128,6 +130,7 @@ function process_page_call($URLPARTS){
           if(count($result->results) > 100){
             $pagevars['eventclosed'] = "yes";
           }
+          $pagevars['eventclosed'] = "yes"; // event is closed manually.
             
           return $twig->render('index.html', array('pagevars'=> (object) $pagevars,'facebook'=>$fbdata,'location'=>$location,'parse'=>$parse_user));
       break;
